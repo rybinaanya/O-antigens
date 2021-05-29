@@ -82,7 +82,7 @@ This stage of analysis includes:
 
 2. We have designed a unique pipeline for identifying candidate O-antigen operons. The key features of our pipeline are: employing several genome annotation tools, additional prediction and validation of operon boundaries, and manual curation and annotation of unknown genes. Our pipeline allowed us to detect about 20 O-antigen genes that were not previously described in Providencia and Xenorhabdus species. 
 
-An example of rendering an operon obtained using a custom pipeline
+An example of visualization an operon obtained using a custom script:
 
 ```python 
 from dna_features_viewer import GraphicFeature, GraphicRecord, BiopythonTranslator
