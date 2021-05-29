@@ -79,9 +79,8 @@ All scripts and examples of figures available [here](https://github.com/rybinaan
 
 ## Authors:
 
-Anna Churkina, Almazov National Medical Research Centre, Saint Petersburg, Russia
-
-Anna Rybina, Skolkovo Institute of Science and Technology, Moscow, Russia
+* Anna Churkina, Almazov National Medical Research Centre, Saint Petersburg, Russia
+* Anna Rybina, Skolkovo Institute of Science and Technology, Moscow, Russia
 
 Supervisors:
 Polina Kuchur, Aleksey Komissarov
