@@ -91,7 +91,7 @@ Sequense extraction was performed using [Python script]((https://github.com/rybi
 
 All scripts and examples of figures available [here](https://github.com/rybinaanya/O-antigens/tree/main/operon_visualization)
 
-if any gene from the operon was not annotated, its sequence was [extracted from FASTA](https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py)
+If any gene from the operon was not annotated, its sequence was [extracted from FASTA](https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py), then this sequence was used to search in [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi)
 
 8. Codon-based test of neutrality
 
