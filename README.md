@@ -57,7 +57,7 @@ quast ${directory_with_assemblies}/*.gz
 ```
 
 or a script (example below) to save output in a certain directory:
-```
+```bash
 #!/bin/bash
 
 path_downloaded_genomes=/home/rybina/O_antigens/ncbi_dataset/data/
@@ -73,7 +73,7 @@ quast.py $(ls ${path_downloaded_genomes}/*.1/*fna) -o ${path_out} -t 10
 * N50
 * L50
 
-Within the framework of this project, a jupyter notebook was written, in which the quality of all assemblies was compared and the best ones were selected for further analysis.
+Within the framework of this project, we selected assembly of the best quality for each species (see a [jupyter notebook](https://github.com/rybinaanya/O-antigens/blob/main/select_assemblies.ipynb)) 
 
 4. Annotation
 
@@ -81,24 +81,36 @@ Within the framework of this project, a jupyter notebook was written, in which t
 ```bash
 for file in ${directory_with_assemblies}/*.fna; do prokka --prefix "${file%.fna}"; done
 ```
+
+or for specifying genus and name of output folder, run the command (you are in the working directory already):
+```bash
+for f in $(ls); do prokka --outdir  ${f}/${f}_prokka --force --genus Providencia --prefix ${f} ${f}/*.fna; done
+```
+
 5. Identify operon boundaries with Operon-Mapper
 
-6. Validate operon boundaries with BPROM and FindTerm
+6. Search for candidate O-antigen operons
 
-Sequense extraction was performed using [Python script]((https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py))
+For PGAP annotation, [Python script](https://github.com/rybinaanya/O-antigens/blob/main/operon_search_pgap.py) was used.
 
-7. Visualize O-antigen operons
+7. Validate boundaries of candidate O-antigen operons with BPROM and FindTerm and clarify annotation of unknown genes using BLAST and ORFfinder
+
+Sequense extraction was performed using [Python script](https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py)
+
+8. Visualize O-antigen operons
 
 All scripts and examples of figures available [here](https://github.com/rybinaanya/O-antigens/tree/main/operon_visualization)
+Example of operon search and operon visualization in _Xenorhabdus bovienii_ str. CS03 could be found [here](https://github.com/rybinaanya/O-antigens/blob/main/Xenorhabdus_bovienii_pgap_example.ipynb) 
 
-If any gene from the operon was not annotated, its sequence was [extracted from FASTA](https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py), then this sequence was used to search in [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi)
-
-8. Codon-based test of neutrality
+9. Codon-based test of neutrality
 
 This stage of analysis includes:
-* creation of files for each of the genes of the conserved operons. Using this scripts: [for Prokka](https://github.com/rybinaanya/O-antigens/blob/main/record_multifasta.py) or [for PGAP](https://github.com/rybinaanya/O-antigens/blob/main/get_conserved_operon_fasta_from_pgap.py), you can extract gene sequences by gene coordinates from a gff file for further use;
-* gene alignment
-* computation of Z-test statistics of neutral evolution in MEGAX with parameters: Nei-Gojobori (Jukes-Cantor) model, 1000 bootstraps
+* creating multi-FASTA files for each gene from the conserved operons. Using [this script](https://github.com/rybinaanya/O-antigens/blob/main/record_multifasta.py), you can extract gene sequences by gene coordinates from a PROKKA gff file for further use
+* gene multiple sequence alignment:
+```
+for f in *.fasta; do mafft ${f} > ${f%%.*}.mafft.fa; done
+```
+* computing Z-test statistics of neutral evolution in MEGAX with parameters: Nei-Gojobori (Jukes-Cantor) model, 1000 bootstraps
 
 ## Results
 
