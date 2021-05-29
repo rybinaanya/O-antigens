@@ -8,7 +8,8 @@ assemblies = ["GCA_000259175.1", "GCA_001874625.1", "GCA_010669105.1",
 
 # list of genes from conserved operons
 genes_from_conserved_operons = ['wecA', 'wecB', 'rffG', 'rffH', 'wecD', 'wecE',
-                                'wzxE', 'wecF', 'wzyE', 'wzzE', 'wecG']
+                                'wzxE', 'wecF', 'wzyE', 'wzzE', 'wecG', 'galE',
+                                'galT', 'galK', 'galM', 'galR']
 
 
 def record_multifasta(dir_with_assemblies, output_dir):
