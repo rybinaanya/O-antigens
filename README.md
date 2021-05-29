@@ -111,8 +111,7 @@ draw_region_by_coordinates("GCA_016618195.1_ASM1661819v1_genomic.gff", 4103300, 
 
 3. Both Providencia and Xenorhabdus species have O-antigen conserved operon involved in the nucleotide (UDP- or dTDP-) sugar biosynthesis (wecB, wecC, rffG, rfbA, rffC, rffA), glucosyl to lipid transfer (wecA, wecF, wecG), and O-antigen processing (wzzE,  wzxE, wxyE).
 
-|    Gene    | P-value |   Z-test statistics of     | Selection |
-|            |         | Neutral Evolution, Z(dN−dS |           |                                          
+|    Gene    | P-value |       Z(dN−dS)             | Selection |                                           
 | :---------:|:-------:| :-------------------------:|:---------:|
 | wecA       | 0.0     |       -8.95                |negative   |
 | wzzE       | 0.0     |       -9.25                |negative   |
@@ -127,8 +126,7 @@ draw_region_by_coordinates("GCA_016618195.1_ASM1661819v1_genomic.gff", 4103300, 
 | wzyE       | 0.0     |       -5.88                |negative   |
 | wecG       | 0.0     |       -6.83                |negative   |
 
-|    Gene    | P-value |   Z-test statistics of     | Selection |
-|            |         | Neutral Evolution, Z(dN−dS |           |                                          
+|    Gene    | P-value |       Z(dN−dS)             | Selection |                
 | :---------:|:-------:| :-------------------------:|:---------:|
 | galE       | 0.0     |       -8.15                |negative   |
 | galT       | 0.0     |       -6.20                |negative   |
