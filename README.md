@@ -111,8 +111,30 @@ draw_region_by_coordinates("GCA_016618195.1_ASM1661819v1_genomic.gff", 4103300, 
 
 3. Both Providencia and Xenorhabdus species have O-antigen conserved operon involved in the nucleotide (UDP- or dTDP-) sugar biosynthesis (wecB, wecC, rffG, rfbA, rffC, rffA), glucosyl to lipid transfer (wecA, wecF, wecG), and O-antigen processing (wzzE,  wzxE, wxyE).
 
-![Z test wec](/Z_test/Z_test_wec_operon.jpeg)
-![Z test gal](/Z_test/Z_test_gal_operon.jpeg)
+|    Gene    | P-value |   Z-test statistics of     | Selection |
+|            |         | Neutral Evolution, Z(dN−dS |           |                                          
+| :---------:|:-------:| :-------------------------:|:---------:|
+| wecA       | 0.0     |       -8.95                |negative   |
+| wzzE       | 0.0     |       -9.25                |negative   |
+| wecB       | 0.0     |       -9.35                |negative   |
+| wecC       | 0.0     |       -10.32               |negative   |
+| rffG       | 0.0     |       -10.47               |negative   |
+| rffH       | 0.0     |       -6.84                |negative   |
+| wecD       | 0.0     |       -6.47                |negative   |
+| wecE       | 0.0     |       -9.71                |negative   |
+| wzxE       | 0.0     |       -10.59               |negative   |
+| wecF       | 0.0     |       -10.18               |negative   |
+| wzyE       | 0.0     |       -5.88                |negative   |
+| wecG       | 0.0     |       -6.83                |negative   |
+
+|    Gene    | P-value |   Z-test statistics of     | Selection |
+|            |         | Neutral Evolution, Z(dN−dS |           |                                          
+| :---------:|:-------:| :-------------------------:|:---------:|
+| galE       | 0.0     |       -8.15                |negative   |
+| galT       | 0.0     |       -6.20                |negative   |
+| galK       | 0.0     |       -6.33                |negative   |
+| galM       | 0.0     |       -8.22                |negative   |
+| galR       | 0.0     |       -7.53                |negative   |
 
 4. We did not observe a correlation between lifestyle and O-antigen operon organization as we initially expected. 
 
