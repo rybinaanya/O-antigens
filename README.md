@@ -94,6 +94,7 @@ __5. Identify operon boundaries with Operon-Mapper__
 __6. Search for candidate O-antigen operons__
 
 For PGAP annotation, [Python script](https://github.com/rybinaanya/O-antigens/blob/main/operon_search_pgap.py) was used.
+[Script for Prokka](https://github.com/rybinaanya/O-antigens/blob/main/operon_search_prokka.py) annotation
 
 __7. Validate boundaries of candidate O-antigen operons with BPROM and FindTerm__
 
