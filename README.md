@@ -71,11 +71,43 @@ All scripts and examples of figures available [here](https://github.com/rybinaan
 
 7. Codon-based test of neutrality
 
+This stage of analysis includes:
+* creation of files for each of the genes of the conserved operons. Using [this script](https://github.com/rybinaanya/O-antigens/blob/main/record_multifasta.py), you can extract gene sequences by gene coordinates from a gff file for further use;
+* gene alignment
+* computation of Z-test statistics of neutral evolution in MEGAX with parameters: Nei-Gojobori (Jukes-Cantor) model, 1000 bootstraps
+
 ## Results
+
+1. Out of 204 Providencia assemblies currently available at NCBI, we selected only seven complete genomes and two genomes of contig/scaffold assembly level that demonstrated the best quality. In total, we analyzed six distinct Providencia species.
+
+2. We have designed a unique pipeline for identifying candidate O-antigen operons. The key features of our pipeline are: employing several genome annotation tools, additional prediction and validation of operon boundaries, and manual curation and annotation of unknown genes. Our pipeline allowed us to detect about 20 O-antigen genes that were not previously described in Providencia and Xenorhabdus species. 
+
+An example of rendering an operon obtained using a custom pipeline
+
+```python 
+from dna_features_viewer import GraphicFeature, GraphicRecord, BiopythonTranslator
+
+
+def draw_region_by_coordinates(gff_file, start_, end_):
+    biopython_translator = BiopythonTranslator()
+    biopython_translator.ignored_features_types = ['CDS']
+    biopython_translator.label_fields = ["gene", "product"]
+    graphic_record = biopython_translator.translate_record(gff_file)
+
+    graphic_record.crop((start_, end_)).plot()
+
+draw_region_by_coordinates("GCA_016618195.1_ASM1661819v1_genomic.gff", 4103300, 4116180)
+```
+
+![Z test wec](/operon_visualization/img/PGAP_gff.png)
+
+
+3. Both Providencia and Xenorhabdus species have O-antigen conserved operon involved in the nucleotide (UDP- or dTDP-) sugar biosynthesis (wecB, wecC, rffG, rfbA, rffC, rffA), glucosyl to lipid transfer (wecA, wecF, wecG), and O-antigen processing (wzzE,  wzxE, wxyE).
 
 ![Z test wec](/Z_test/Z_test_wec_operon.jpeg)
 ![Z test gal](/Z_test/Z_test_gal_operon.jpeg)
 
+4. We did not observe a correlation between lifestyle and O-antigen operon organization as we initially expected. 
 
 ## Authors:
 
