@@ -175,7 +175,7 @@ Almost all _Providencia_ used in the study have _galETKMR_ operon (except for Pr
 
 4. We did not observe a correlation between lifestyle and O-antigen operon organization as we initially expected. 
 
-More results can be found here
+[Presentation]
 
 ## Authors:
 
@@ -183,5 +183,5 @@ More results can be found here
 * Anna Rybina, Skolkovo Institute of Science and Technology, Moscow, Russia
 
 Supervisors:
-Polina Kuchur, Aleksey Komissarov
+* Polina Kuchur, Aleksey Komissarov
 Applied Genomics Laboratory, SCAMT Institute, ITMO University, 191002 Saint-Petersburg, Russia
