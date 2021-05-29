@@ -1,4 +1,4 @@
-O_antigens_genes = ["cpxA", "qdtf", "rmlA", "qdtA", "qdtB", "wzx", "wpaA",
+O_antigens_genes = ["cpxA", "qdtf", "rmlA", "qdtA", "qdtB", "wzx",
                      "wpaA", "wzyE", "wpaB", "wpaC", "ugd", "wpaD",
                      "gne", "galE", "wza", "wzb", "wzc", "yibK", "wecA",
                      "wecB", "wecD", "wecE", "wecF", "wecG", "rffG", "rffH",
