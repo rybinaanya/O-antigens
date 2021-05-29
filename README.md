@@ -7,10 +7,10 @@ Analysis of the functional organization of the O-antigen operons makes it possib
 This project aims to identify and compare candidate O-antigen operons in bacteria of the Morganellaceae family with different levels of virulence.
 
 Goals of the project:
-* to find genes of O-antigen biosynthesis in the Providencia and Xenorhabdus species analyzing the literature;
-* to analyze the quality of all Providencia assemblies available at NCBI (204 assemblies) and select the best one for each species;
+* to find genes of O-antigen biosynthesis in the _Providencia_ and _Xenorhabdus_ species analyzing the literature;
+* to analyze the quality of all _Providencia_ assemblies available at NCBI (204 assemblies) and select the best one for each species;
 * to create and test the pipeline for identifying and visualizing O-antigen operons;
-* to compare candidate O-antigen operons in selected Providencia and Xenorhabdus species;
+* to compare candidate O-antigen operons in selected _Providencia_ and _Xenorhabdus_ species;
 
 ## Programs used in the study
 
@@ -46,17 +46,19 @@ Python packages:
 
 ## Workflow
 
-1. Download all Providencia assemblies
+1. Download all _Providencia_ assemblies
+
 NCBI link: https://www.ncbi.nlm.nih.gov/assembly/?term=Providencia
 
 2. Check assemblies statistics
-using the follwoing command:
+
+Use the follwoing command:
 ```bash
 # Running QUAST
 quast ${directory_with_assemblies}/*.gz
 ```
 
-or a script (example below) to save output in a certain directory:
+or to save output in a certain directory, a script (example below):
 ```bash
 #!/bin/bash
 
@@ -67,7 +69,7 @@ quast.py $(ls ${path_downloaded_genomes}/*.1/*fna) -o ${path_out} -t 10
 
 ```
 
-3. Select better assemblies, based on statistics:
+3. Select the best assemblies, based on statistics:
 * number of contigs
 * Total length (>= 50000 bp)
 * N50
@@ -79,7 +81,7 @@ Within the framework of this project, we selected assembly of the best quality f
 
 * Prokka
 ```bash
-for file in ${directory_with_assemblies}/*.fna; do prokka ${file} --prefix ${file}; done
+for file in ${directory_with_assemblies}/*.fna; do prokka --prefix "${file%.fna}"; done
 ```
 
 or for specifying genus and name of output folder, run the command (you are in the working directory already):
@@ -105,18 +107,19 @@ Example of operon search and operon visualization in _Xenorhabdus bovienii_ str.
 9. Codon-based test of neutrality
 
 This stage of analysis includes:
-* creating multi-FASTA files for each gene from the conserved operons. Using [this script](https://github.com/rybinaanya/O-antigens/blob/main/record_multifasta.py), you can extract gene sequences by gene coordinates from a PROKKA gff file for further use
-* gene multiple sequence alignment:
+* creating multi-FASTA files for each gene from the conserved operons. Using [this script](https://github.com/rybinaanya/O-antigens/blob/main/record_multifasta.py), you can extract gene sequences by gene coordinates from a PROKKA gff file. To get sequences of conserved operon genes from PGAP gff annotation file, use [this script](https://github.com/rybinaanya/O-antigens/blob/main/get_conserved_operon_fasta_from_pgap.py). Resulting multi-FASTA files could be found [here](https://github.com/rybinaanya/O-antigens/tree/main/Z_test) 
+* running multiple sequence alignment on gene multi-FASTA files using MAFFT:
 ```
 for f in *.fasta; do mafft ${f} > ${f%%.*}.mafft.fa; done
 ```
-* computing Z-test statistics of neutral evolution in MEGAX with parameters: Nei-Gojobori (Jukes-Cantor) model, 1000 bootstraps
+* computing the Z-test statistics of neutral evolution in MEGAX: syn-nonsynonymous substitution type and Nei-Gojobori (Jukes-Cantor) model were applied on 1000 bootstraps with pairwise deletion as gaps/missing data treatment
+
 
 ## Results
 
-1. Out of 204 Providencia assemblies currently available at NCBI, we selected only seven complete genomes and two genomes of contig/scaffold assembly level that demonstrated the best quality. In total, we analyzed six distinct Providencia species.
+1. Out of 204 _Providencia_ assemblies currently available at NCBI, we selected only seven complete genomes and two genomes of contig/scaffold assembly level that demonstrated the best quality. In total, we analyzed six distinct _Providencia_ species.
 
-2. We have designed a unique pipeline for identifying candidate O-antigen operons. The key features of our pipeline are: employing several genome annotation tools, additional prediction and validation of operon boundaries, and manual curation and annotation of unknown genes. Our pipeline allowed us to detect about 20 O-antigen genes that were not previously described in Providencia and Xenorhabdus species. 
+2. We have designed a unique pipeline for identifying candidate O-antigen operons. The key features of our pipeline are: employing several genome annotation tools, additional prediction and validation of operon boundaries, and manual curation and annotation of unknown genes. Our pipeline allowed us to detect about 20 O-antigen genes that were not previously described in _Providencia_ and _Xenorhabdus_ species. 
 
 An example of visualization an operon obtained using a custom script:
 
@@ -138,7 +141,7 @@ draw_region_by_coordinates("GCA_016618195.1_ASM1661819v1_genomic.gff", 4103300, 
 ![Z test wec](/operon_visualization/img/PGAP_gff.png)
 
 
-3. Both Providencia and Xenorhabdus species have O-antigen conserved operon involved in the nucleotide (UDP- or dTDP-) sugar biosynthesis (wecB, wecC, rffG, rfbA, rffC, rffA), glucosyl to lipid transfer (wecA, wecF, wecG), and O-antigen processing (wzzE,  wzxE, wxyE).
+3. Both Providencia and Xenorhabdus species have O-antigen conserved operon involved in the nucleotide (UDP- or dTDP-) sugar biosynthesis (_wecB_, _wecC_, _rffG_, _rfbA_, _rffC_, _rffA_), glucosyl to lipid transfer (_wecA_, _wecF_, _wecG_), and O-antigen processing (_wzzE_,  _wzxE_, _wxyE_). 
 
 |    Gene    | P-value |       Z(dN−dS)             | Selection |                                           
 | :---------:|:-------:| :-------------------------:|:---------:|
@@ -154,6 +157,8 @@ draw_region_by_coordinates("GCA_016618195.1_ASM1661819v1_genomic.gff", 4103300, 
 | wecF       | 0.0     |       -10.18               |negative   |
 | wzyE       | 0.0     |       -5.88                |negative   |
 | wecG       | 0.0     |       -6.83                |negative   |
+
+Almost all _Providencia_ used in the study have _galETKMR_ operon (except for Providencia alcalifaciens strain 1701003) with the same genetic order and gene content
 
 |    Gene    | P-value |       Z(dN−dS)             | Selection |                
 | :---------:|:-------:| :-------------------------:|:---------:|
