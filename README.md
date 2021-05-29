@@ -60,3 +60,8 @@ The project used two annotations(Prokka and PGAP), which have some differences i
 All scripts and examples of figures available [here](https://github.com/rybinaanya/O-antigens/tree/main/operon_visualization)
 
 7. Codon-based test of neutrality
+
+## Results
+
+![Z test wec](/Z_test/Z_test_wec_operon.jpeg)
+![Z test gal](/Z_test/Z_test_gal_operon.jpeg)
