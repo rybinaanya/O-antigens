@@ -96,7 +96,7 @@ If any gene from the operon was not annotated, its sequence was [extracted from 
 8. Codon-based test of neutrality
 
 This stage of analysis includes:
-* creation of files for each of the genes of the conserved operons. Using this scripts: [for Pokka](https://github.com/rybinaanya/O-antigens/blob/main/record_multifasta.py) or [for PGAP](https://github.com/rybinaanya/O-antigens/blob/main/get_conserved_operon_fasta_from_pgap.py), you can extract gene sequences by gene coordinates from a gff file for further use;
+* creation of files for each of the genes of the conserved operons. Using this scripts: [for Prokka](https://github.com/rybinaanya/O-antigens/blob/main/record_multifasta.py) or [for PGAP](https://github.com/rybinaanya/O-antigens/blob/main/get_conserved_operon_fasta_from_pgap.py), you can extract gene sequences by gene coordinates from a gff file for further use;
 * gene alignment
 * computation of Z-test statistics of neutral evolution in MEGAX with parameters: Nei-Gojobori (Jukes-Cantor) model, 1000 bootstraps
 
