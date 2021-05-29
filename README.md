@@ -191,6 +191,7 @@ Applied Genomics Laboratory, SCAMT Institute, ITMO University, 191002 Saint-Pete
 Bisch, Gaëlle, Sylvie Pagès, John G. McMullen 2nd, S. Patricia Stock, Bernard Duvic, Alain Givaudan, and Sophie Gaudriault. 2015. “Xenorhabdus Bovienii CS03, the Bacterial Symbiont of the Entomopathogenic Nematode Steinernema Weiseri, Is a Non-Virulent Strain against Lepidopteran Insects.” Journal of Invertebrate Pathology 124 (January): 15–22.
 
 Herbert, Erin E., and Heidi Goodrich-Blair. 2007. “Friend and Foe: The Two Faces of Xenorhabdus Nematophila.” Nature Reviews. Microbiology 5 (8): 634–46.
+
 Ovchinnikova, Olga G., Bin Liu, Dan Guo, Nina A. Kocharova, Magdalena Bialczak-Kokot, Alexander S. Shashkov, Lu Feng, Antoni Rozalski, Lei Wang, and Yuriy A. Knirel. 2012. “Structural, Serological, and Genetic Characterization of the O-Antigen of Providencia Alcalifaciens O40.” FEMS Immunology and Medical Microbiology 66 (3): 382–92.
 
 Samuel, Gabrielle, and Peter Reeves. 2003. “Biosynthesis of O-Antigens: Genes and Pathways Involved in Nucleotide Sugar Precursor Synthesis and O-Antigen Assembly.” Carbohydrate Research 338 (23): 2503–19.
