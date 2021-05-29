@@ -5,13 +5,22 @@ import pandas as pd
 
 def get_seqrecord_conserved_gene(fna, gff, arr_id_coord_strand, gene_names, operon_strand):
     """
-
-    :param fna:
-    :param gff:
-    :param arr_id_coord_strand:
-    :param gene_names:
-    :param operon_strand:
-    :return:
+    Function constructs SeqRecord object of a gene sequence based on given data
+    :param fna: path to genome FASTA file
+    :param gff: path to GFF annotation file (PGAP)
+    :param arr_id_coord_strand: numpy array with 4 columns:
+    - id of record sequence in genome FASTA file on which a gene is located;
+    - gene start coordinate;
+    - gene end coordinate;
+    - DNA strand on which a gene is located
+    :param gene_names: list of conserved operon genes
+    :param operon_strand: '+' or '-' strand on which the operons is located
+    (assuming all operon genes are on the same DNA strand)
+    :return: SeqRecord object:
+    - a gene sequence
+    - id consists of the gene name and assembly id;
+    - name consists of the gene name and assembly id of organism from which a gene sequence was extracted;
+    - description includes name of organism from which a gene sequence was extracted
     """
     for record in SeqIO.parse(fna, 'fasta'):
         if record.id == arr_id_coord_strand[0][0]:
@@ -29,17 +38,18 @@ def get_seqrecord_conserved_gene(fna, gff, arr_id_coord_strand, gene_names, oper
                                      description=' '.join(record.description.split(' ')[1:5]))
 
 
-def get_conserved_genes_seq(lst_gal_gff, edge_operon_gene, operon_length_, last=False):
+def get_conserved_genes_seq(lst_gff, edge_operon_gene, operon_length_, last=False):
     """
-
-    :param lst_gal_gff:
-    :param edge_operon_gene:
-    :param last:
-    :param operon_length_:
-    :return:
+    Functions searches for conserved genes from the list in specified GFF annotation files
+    and for each gene in operon (if found), gets sequence, id, description and creates a SeqRecord object
+    :param lst_gff: a list of paths to GFF PGAP annotation files
+    :param edge_operon_gene: the first or the last gene of the operon; if the last one then flag 'last' should be True
+    :param last: flag; default: False; True if edge_operon_gene is the last gene of the operon
+    :param operon_length_: number of genes in the operon
+    :return: list of SeqRecord objects constructed for each gene in the operon
     """
     lst_new_records = []
-    for gff in lst_gal_gff:
+    for gff in lst_gff:
         fna = gff[:-5] + '.fna'
         # load GFF annotation file as pandas DataFrame
         df = pd.read_csv(gff,
@@ -91,15 +101,15 @@ def get_conserved_genes_seq(lst_gal_gff, edge_operon_gene, operon_length_, last=
     return lst_new_records
 
 
-def write_gene_fasta_files(gal_genes, lst_new_records, output_folder):
+def write_gene_fasta_files(conserved_genes, lst_new_records, output_folder):
     """
-
-    :param gal_genes:
-    :param lst_new_records:
-    :param output_folder:
-    :return:
+    Write multi-FASTA files for each gene from the conserved operon
+    :param conserved_genes: list of conserved operon genes
+    :param lst_new_records: list of SeqRecord objects of conserved operon genes
+    :param output_folder: path to folder where resulting FASTA files would be written to
+    :return: None
     """
-    for gene in gal_genes:
+    for gene in conserved_genes:
         gene_records = []
         with open(f"{output_folder}/{gene}.fasta", 'w') as fout:
             for record in lst_new_records:
