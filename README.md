@@ -163,7 +163,7 @@ for f in *.fasta; do mafft ${f} > ${f%%.*}.mafft.fa; done
 | wzyE       | 0.0     |       -5.88                |negative   |
 | wecG       | 0.0     |       -6.83                |negative   |
 
-Almost all _Providencia_ used in the study have _galETKMR_ operon (except for Providencia alcalifaciens strain 1701003) with the same genetic order and gene content
+Almost all _Providencia_ used in the study have _galETKMR_ operon (except for _Providencia alcalifaciens_ strain 1701003) with the same genetic order and gene content
 
 |    Gene    | P-value |       Z(dN−dS)             | Selection |                
 | :---------:|:-------:| :-------------------------:|:---------:|
