@@ -22,4 +22,41 @@ This project was performed with:
 * [Operon-Mapper](https://biocomputo.ibt.unam.mx/operon_mapper/)
 * [BPROM](http://www.softberry.com/berry.phtml?topic=bprom&group=programs&subgroup=gfindb)
 * [FindTerm](http://www.softberry.com/berry.phtml?topic=findterm&group=programs&subgroup=gfindb)
+* MAFFT
 * MEGAX v10.2.4
+
+Python packeges:
+* Biopython v1.78
+* dna-features-viewer v3.0.3
+* matplotlib v3.3.4
+* numpy v1.20.1
+
+## Workflow
+
+1. Download all Providencia assemblies
+NCBI link: https://www.ncbi.nlm.nih.gov/assembly/?term=Providencia
+
+2. Check assemblies statistics
+```bash
+# Running QUAST
+quast ${directory_with_assemblies}/*.gz
+```
+
+3. Select better assemblies, based on statistics:
+* number of contigs
+* N50
+* L50
+
+Within the framework of this project, a jupyter notebook was written, in which the quality of all assemblies was compared and the best ones were selected for further analysis.
+
+4. Identify operon boundaries with Operon-Mapper
+
+5. Validate operon boundaries with BPROM and FindTerm
+Sequense extraction was performed using [Python script](https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py)
+
+6. Visualize O-antigen operons
+The project used two annotations(Prokka and PGAP), which have some differences in the gb file structure. Therefore, to visualize the operons, we created scripts that use the files of each annotation.
+
+All scripts and examples of figures available [here](https://github.com/rybinaanya/O-antigens/tree/main/operon_visualization)
+
+7. Codon-based test of neutrality
