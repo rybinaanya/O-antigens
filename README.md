@@ -79,7 +79,7 @@ Within the framework of this project, we selected assembly of the best quality f
 
 * Prokka
 ```bash
-for file in ${directory_with_assemblies}/*.fna; do prokka --prefix "${file%.fna}"; done
+for file in ${directory_with_assemblies}/*.fna; do prokka ${file} --prefix ${file}; done
 ```
 
 or for specifying genus and name of output folder, run the command (you are in the working directory already):
