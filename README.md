@@ -62,10 +62,10 @@ Within the framework of this project, a jupyter notebook was written, in which t
 4. Identify operon boundaries with Operon-Mapper
 
 5. Validate operon boundaries with BPROM and FindTerm
+
 Sequense extraction was performed using [Python script](https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py)
 
 6. Visualize O-antigen operons
-The project used two annotations(Prokka and PGAP), which have some differences in the gb file structure. Therefore, to visualize the operons, we created scripts that use the files of each annotation.
 
 All scripts and examples of figures available [here](https://github.com/rybinaanya/O-antigens/tree/main/operon_visualization)
 
