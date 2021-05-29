@@ -75,3 +75,13 @@ All scripts and examples of figures available [here](https://github.com/rybinaan
 
 ![Z test wec](/Z_test/Z_test_wec_operon.jpeg)
 ![Z test gal](/Z_test/Z_test_gal_operon.jpeg)
+
+
+## Authors:
+
+Anna Churkina, Almazov National Medical Research Centre, Saint Petersburg, Russia
+Anna Rybina, Skolkovo Institute of Science and Technology, Moscow, Russia
+
+Supervisors:
+Polina Kuchur, Aleksey Komissarov
+Applied Genomics Laboratory, SCAMT Institute, ITMO University, 191002 Saint-Petersburg, Russia
