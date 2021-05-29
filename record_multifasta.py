@@ -6,7 +6,7 @@ assemblies = ["GCA_000259175.1", "GCA_001874625.1", "GCA_010669105.1",
               "GCA_013702025.1", "GCA_013702185.1", "GCA_014652175.1",
               "GCA_016618195.1", "GCA_900455075.1", "GCA_900635875.1"]
 
-# list of gene from conserved operons
+# list of genes from conserved operons
 genes_from_conserved_operons = ['wecA', 'wecB', 'rffG', 'rffH', 'wecD', 'wecE',
                                 'wzxE', 'wecF', 'wzyE', 'wzyE', 'wecG']
 
