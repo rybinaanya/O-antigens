@@ -95,31 +95,15 @@ for f in $(ls); do prokka --outdir  ${f}/${f}_prokka --force --genus Providencia
 
 For PGAP annotation, [Python script](https://github.com/rybinaanya/O-antigens/blob/main/operon_search_pgap.py) was used.
 
-7. Validate boundaries of candidate O-antigen operons with BPROM and FindTerm and clarify annotation of unknown genes using BLAST and ORFfinder
+7. Validate boundaries of candidate O-antigen operons with BPROM and FindTerm
 
-Sequense extraction was performed using [Python script](https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py)
+Sequence extraction was performed using [Python script](https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py)
 
 8. Visualize O-antigen operons
 
 All scripts and examples of figures available [here](https://github.com/rybinaanya/O-antigens/tree/main/operon_visualization)
+
 Example of operon search and operon visualization in _Xenorhabdus bovienii_ str. CS03 could be found [here](https://github.com/rybinaanya/O-antigens/blob/main/Xenorhabdus_bovienii_pgap_example.ipynb) 
-
-9. Codon-based test of neutrality
-
-This stage of analysis includes:
-* creating multi-FASTA files for each gene from the conserved operons. Using [this script](https://github.com/rybinaanya/O-antigens/blob/main/record_multifasta.py), you can extract gene sequences by gene coordinates from a PROKKA gff file. To get sequences of conserved operon genes from PGAP gff annotation file, use [this script](https://github.com/rybinaanya/O-antigens/blob/main/get_conserved_operon_fasta_from_pgap.py). Resulting multi-FASTA files could be found [here](https://github.com/rybinaanya/O-antigens/tree/main/Z_test) 
-* running multiple sequence alignment on gene multi-FASTA files using MAFFT:
-```
-for f in *.fasta; do mafft ${f} > ${f%%.*}.mafft.fa; done
-```
-* computing the Z-test statistics of neutral evolution in MEGAX: syn-nonsynonymous substitution type and Nei-Gojobori (Jukes-Cantor) model were applied on 1000 bootstraps with pairwise deletion as gaps/missing data treatment
-
-
-## Results
-
-1. Out of 204 _Providencia_ assemblies currently available at NCBI, we selected only seven complete genomes and two genomes of contig/scaffold assembly level that demonstrated the best quality. In total, we analyzed six distinct _Providencia_ species.
-
-2. We have designed a unique pipeline for identifying candidate O-antigen operons. The key features of our pipeline are: employing several genome annotation tools, additional prediction and validation of operon boundaries, and manual curation and annotation of unknown genes. Our pipeline allowed us to detect about 20 O-antigen genes that were not previously described in _Providencia_ and _Xenorhabdus_ species. 
 
 An example of visualization an operon obtained using a custom script:
 
@@ -140,6 +124,26 @@ draw_region_by_coordinates("GCA_016618195.1_ASM1661819v1_genomic.gff", 4103300, 
 
 ![Z test wec](/operon_visualization/img/PGAP_gff.png)
 
+
+If annotation of some genes was undefined (see picture above), we clarified it using BLAST and ORFfinder. Sequence of respective gene was extracted using [Python script](https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py)
+
+
+9. Codon-based test of neutrality
+
+This stage of analysis includes:
+* creating multi-FASTA files for each gene from the conserved operons. Using [this script](https://github.com/rybinaanya/O-antigens/blob/main/record_multifasta.py), you can extract gene sequences by gene coordinates from a PROKKA gff file. To get sequences of conserved operon genes from PGAP gff annotation file, use [this script](https://github.com/rybinaanya/O-antigens/blob/main/get_conserved_operon_fasta_from_pgap.py). Resulting multi-FASTA files could be found [here](https://github.com/rybinaanya/O-antigens/tree/main/Z_test) 
+* running multiple sequence alignment on gene multi-FASTA files using MAFFT:
+```
+for f in *.fasta; do mafft ${f} > ${f%%.*}.mafft.fa; done
+```
+* computing the Z-test statistics of neutral evolution in MEGAX: syn-nonsynonymous substitution type and Nei-Gojobori (Jukes-Cantor) model were applied on 1000 bootstraps with pairwise deletion as gaps/missing data treatment
+
+
+## Results
+
+1. Out of 204 _Providencia_ assemblies currently available at NCBI, we selected only seven complete genomes and two genomes of contig/scaffold assembly level that demonstrated the best quality. In total, we analyzed six distinct _Providencia_ species.
+
+2. We have designed a unique pipeline for identifying candidate O-antigen operons. The key features of our pipeline are: employing several genome annotation tools, additional prediction and validation of operon boundaries, and manual curation and annotation of unknown genes. Our pipeline allowed us to detect about 20 O-antigen genes that were not previously described in _Providencia_ and _Xenorhabdus_ species. 
 
 3. Both Providencia and Xenorhabdus species have O-antigen conserved operon involved in the nucleotide (UDP- or dTDP-) sugar biosynthesis (_wecB_, _wecC_, _rffG_, _rfbA_, _rffC_, _rffA_), glucosyl to lipid transfer (_wecA_, _wecF_, _wecG_), and O-antigen processing (_wzzE_,  _wzxE_, _wxyE_). 
 
