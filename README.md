@@ -50,13 +50,26 @@ Python packages:
 NCBI link: https://www.ncbi.nlm.nih.gov/assembly/?term=Providencia
 
 2. Check assemblies statistics
+using the follwoing command:
 ```bash
 # Running QUAST
 quast ${directory_with_assemblies}/*.gz
 ```
 
+or a script (example below) to save output in a certain directory:
+```
+#!/bin/bash
+
+path_downloaded_genomes=/home/rybina/O_antigens/ncbi_dataset/data/
+path_out=/home/rybina/O_antigens/quast_Providencia_ncbi/
+
+quast.py $(ls ${path_downloaded_genomes}/*.1/*fna) -o ${path_out} -t 10
+
+```
+
 3. Select better assemblies, based on statistics:
 * number of contigs
+* Total length (>= 50000 bp)
 * N50
 * L50
 
