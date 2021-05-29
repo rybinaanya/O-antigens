@@ -42,7 +42,7 @@ def draw_operon_several_contigs_assembly(gb_file, annotation, record_id, start,
                                          stop):
     """
     Function produces schematic plot of DNA region specified with coordinates
-    by any (Prokka or PGAP) annotation of assembly in two ar more contigs;
+    by any (Prokka or PGAP) annotation of assembly in two or more contigs;
     :param gb_file: path to GB annotation file
     :param annotation: name annotation: Prokka or PGAP
     :param record_id: LOCUS from GB file
