@@ -59,17 +59,24 @@ quast ${directory_with_assemblies}/*.gz
 
 Within the framework of this project, a jupyter notebook was written, in which the quality of all assemblies was compared and the best ones were selected for further analysis.
 
-4. Identify operon boundaries with Operon-Mapper
+4. Annotation
 
-5. Validate operon boundaries with BPROM and FindTerm
+* Prokka
+```bash
+for file in ${directory_with_assemblies}/*.fna; do prokka --prefix "${file%.fna}"; done
+```
+
+5. Identify operon boundaries with Operon-Mapper
+
+6. Validate operon boundaries with BPROM and FindTerm
 
 Sequense extraction was performed using [Python script](https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py)
 
-6. Visualize O-antigen operons
+7. Visualize O-antigen operons
 
 All scripts and examples of figures available [here](https://github.com/rybinaanya/O-antigens/tree/main/operon_visualization)
 
-7. Codon-based test of neutrality
+8. Codon-based test of neutrality
 
 This stage of analysis includes:
 * creation of files for each of the genes of the conserved operons. Using [this script](https://github.com/rybinaanya/O-antigens/blob/main/record_multifasta.py), you can extract gene sequences by gene coordinates from a gff file for further use;
