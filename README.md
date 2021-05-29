@@ -125,7 +125,7 @@ draw_region_by_coordinates("GCA_016618195.1_ASM1661819v1_genomic.gff", 4103300, 
 ![Z test wec](/operon_visualization/img/PGAP_gff.png)
 
 
-If annotation of some genes was undefined (see picture above), we clarified it using BLAST and ORFfinder. Sequence of respective gene was extracted using [Python script](https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py)
+Sometimes annotation of some genes was undefined (as in the picture above: name for one gene is absent). In that case, we extracted DNA fragment covering the respective gene and its upstream and downstream 300-nucleotide region using [Python script](https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py) and clarified annotation of resulting sequence using BLAST and ORFfinder.
 
 
 __9. Codon-based test of neutrality__
