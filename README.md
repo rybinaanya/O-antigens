@@ -81,21 +81,22 @@ Within the framework of this project, a jupyter notebook was written, in which t
 ```bash
 for file in ${directory_with_assemblies}/*.fna; do prokka --prefix "${file%.fna}"; done
 ```
-
 5. Identify operon boundaries with Operon-Mapper
 
 6. Validate operon boundaries with BPROM and FindTerm
 
-Sequense extraction was performed using [Python script](https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py)
+Sequense extraction was performed using [Python script]((https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py))
 
 7. Visualize O-antigen operons
 
 All scripts and examples of figures available [here](https://github.com/rybinaanya/O-antigens/tree/main/operon_visualization)
 
+if any gene from the operon was not annotated, its sequence was [extracted from FASTA](https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py)
+
 8. Codon-based test of neutrality
 
 This stage of analysis includes:
-* creation of files for each of the genes of the conserved operons. Using [this script](https://github.com/rybinaanya/O-antigens/blob/main/record_multifasta.py), you can extract gene sequences by gene coordinates from a gff file for further use;
+* creation of files for each of the genes of the conserved operons. Using this scripts: [for Pokka](https://github.com/rybinaanya/O-antigens/blob/main/record_multifasta.py) or [for PGAP](https://github.com/rybinaanya/O-antigens/blob/main/get_conserved_operon_fasta_from_pgap.py), you can extract gene sequences by gene coordinates from a gff file for further use;
 * gene alignment
 * computation of Z-test statistics of neutral evolution in MEGAX with parameters: Nei-Gojobori (Jukes-Cantor) model, 1000 bootstraps
 
