@@ -29,15 +29,6 @@ def draw_operon_one_contig_assembly(gb_file, annotation, start, stop):
         plt.show()
 
 
-# Examples
-# Prokka
-draw_operon_one_contig_assembly("GCA_900635875.1.gbf",
-                                'Prokka', 471058, 476657)
-# #PGAP
-draw_operon_one_contig_assembly("GCA_900635875.1_35661_G01_genomic.gbff",
-                                'PGAP', 471058, 476657)
-
-
 def draw_operon_several_contigs_assembly(gb_file, annotation, record_id, start,
                                          stop):
     """
@@ -67,11 +58,3 @@ def draw_operon_several_contigs_assembly(gb_file, annotation, record_id, start,
                 graphic_record.crop((start, stop)).plot(figure_width=10,
                                                         strand_in_label_threshold=7)
                 plt.show()
-
-# Examples
-# Prokka
-draw_operon_several_contigs_assembly("GCA_001874625.1.gbf", "Prokka",
-                                     "CP017671.1", 4509039, 4521933)
-# PGAP
-draw_operon_several_contigs_assembly("GCF_010669105.1_ASM1066910v1_genomic.gbff",
-                                     "PGAP", "NZ_CP048621.1", 4272652,  4285534)
