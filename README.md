@@ -91,6 +91,8 @@ for f in $(ls); do prokka --outdir  ${f}/${f}_prokka --force --genus Providencia
 
 __5. Identify operon boundaries with Operon-Mapper__
 
+Upload genome FASTA file to the web-server and submit with default options. After job completion, download output compressed folder that includes list of predicted operons with their gene compostion, predicted ORFs coordinates and their DNA sequences and other files.
+
 __6. Search for candidate O-antigen operons__
 
 For PGAP annotation, [Python script](https://github.com/rybinaanya/O-antigens/blob/main/operon_search_pgap.py) was used.
