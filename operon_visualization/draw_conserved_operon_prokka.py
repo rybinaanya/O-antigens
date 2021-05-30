@@ -2,8 +2,8 @@ from matplotlib import pyplot as plt
 from dna_features_viewer import BiopythonTranslator
 
 
-wec_operon = ['wecA', 'wecB', 'rffG', 'rffH', 'wecD', 'wecE', 'wzxE', 'wecF',
-              'wzyE', 'wzyE', 'wecG']
+wec_operon = ['wecA', 'wzzE', 'wecB', 'wecC', 'rffG', 'rffH', 
+              'wecD', 'wecE', 'wzxE', 'wecF', 'wzyE', 'wecG']
 
 gal_operon = ['galE', 'galT', 'galK', 'galM', 'galR']
 
