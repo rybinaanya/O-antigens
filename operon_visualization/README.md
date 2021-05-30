@@ -3,7 +3,7 @@ This folder contains python scripts used for visualizing candidate O-antigen ope
 The project used two annotations(Prokka and PGAP), which have some differences in the gb file structure. Therefore, to visualize the operons, we created scripts that use the files of each annotation.
 
 An example of visualization an operon using a custom script:
-* [by gb files from Prokka and PGAP annotations] with one contig assemblies (https://github.com/rybinaanya/O-antigens/blob/main/operon_visualization/draw_conserved_operon_prokka.py)
+* [by gb files from Prokka and PGAP annotations](https://github.com/rybinaanya/O-antigens/blob/main/operon_visualization/draw_conserved_operon_prokka.py) with one contig assemblies 
 
 ```python 
 from matplotlib import pyplot as plt
@@ -35,7 +35,7 @@ draw_operon_one_contig_assembly("GCA_900635875.1_35661_G01_genomic.gbff",
                                 'PGAP', 471058, 476657)
 ```
 Prokka:
-![prokka](operon_visualization/img/Prokka_gb_one_contig.pngg)
+![prokka](operon_visualization/img/Prokka_gb_one_contig.png)
 
 PGAP:
 ![pgap](/operon_visualization/img/PGAP_gb_one_contig.png)
