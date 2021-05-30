@@ -75,7 +75,7 @@ __3. Select the best assemblies, based on statistics:__
 * N50
 * L50
 
-Within the framework of this project, we selected assembly of the best quality for each species (see a [jupyter notebook](https://github.com/rybinaanya/O-antigens/blob/main/select_assemblies.ipynb)) 
+Within the framework of this project, we selected assembly of the best quality for each species (see a [jupyter notebook](https://github.com/rybinaanya/O-antigens/blob/main/select_assemblies.ipynb)).
 
 __4. Annotation__
 
@@ -96,7 +96,7 @@ Upload genome FASTA file to the web-server and submit with default options. Afte
 __6. Search for candidate O-antigen operons__
 
 For PGAP annotation, [Python script](https://github.com/rybinaanya/O-antigens/blob/main/operon_search_pgap.py) was used.
-[Script for Prokka](https://github.com/rybinaanya/O-antigens/blob/main/operon_search_prokka.py) annotation
+Script for Prokka annotation is deposited [here](https://github.com/rybinaanya/O-antigens/blob/main/operon_search_prokka.py).
 
 __7. Validate boundaries of candidate O-antigen operons with BPROM and FindTerm__
 
@@ -104,9 +104,9 @@ Sequence extraction was performed using [Python script](https://github.com/rybin
 
 __8. Visualize O-antigen operons__
 
-All scripts and examples of figures available [here](https://github.com/rybinaanya/O-antigens/tree/main/operon_visualization)
+All scripts and examples of figures available [here](https://github.com/rybinaanya/O-antigens/tree/main/operon_visualization).
 
-Example of operon search and operon visualization in _Xenorhabdus bovienii_ str. CS03 could be found [here](https://github.com/rybinaanya/O-antigens/blob/main/Xenorhabdus_bovienii_pgap_example.ipynb) 
+Example of operon search and operon visualization in _Xenorhabdus bovienii_ str. CS03 could be found [here](https://github.com/rybinaanya/O-antigens/blob/main/Xenorhabdus_bovienii_pgap_example.ipynb). 
 
 An example of visualization an operon obtained using a custom script:
 
@@ -128,7 +128,7 @@ draw_region_by_coordinates("GCA_016618195.1_ASM1661819v1_genomic.gff", 4103300, 
 ![Z test wec](/operon_visualization/img/PGAP_gff.png)
 
 
-Sometimes annotation of some genes was undefined (as in the picture above: name for one gene is absent). In that case, we extracted DNA fragment covering the respective gene and its upstream and downstream 300-nucleotide region using [Python script](https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py) and clarified annotation of resulting sequence using BLAST and ORFfinder.
+Sometimes annotation of a gene was undefined (as in the picture above: name for one gene is absent). In that case, we extracted DNA fragment covering the respective gene and its upstream and downstream 300-nucleotide region using [Python script](https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py) and clarified annotation of resulting sequence using BLAST and ORFfinder.
 
 
 __9. Codon-based test of neutrality__
@@ -146,7 +146,7 @@ for f in *.fasta; do mafft ${f} > ${f%%.*}.mafft.fa; done
 
 1. Out of 204 _Providencia_ assemblies currently available at NCBI, we selected only seven complete genomes and two genomes of contig/scaffold assembly level that demonstrated the best quality. In total, we analyzed six distinct _Providencia_ species.
 
-2. We have designed a unique pipeline for identifying candidate O-antigen operons. The key features of our pipeline are: employing several genome annotation tools, additional prediction and validation of operon boundaries, and manual curation and annotation of unknown genes. Our pipeline allowed us to detect about 20 O-antigen genes that were not previously described in _Providencia_ and _Xenorhabdus_ species. 
+2. We have designed a unique pipeline for identifying candidate O-antigen operons. The key features of our pipeline are: employing several genome annotation tools, additional prediction and validation of operon boundaries, and manual curation and annotation of unknown genes. Our pipeline allowed us to detect 23 and 12 genes in variable and conserved candidate O-antigen operons, respectively. Among these genes, only seven (_galE_, _wxz_, _wzc_, _wza_, _ugd_, _rmlA_, and _wecA_)  were previously described as O-antigen ones in _Providencia_ and _Xenorhabdus_ species.  
 
 3. Both Providencia and Xenorhabdus species have O-antigen conserved operon involved in the nucleotide (UDP- or dTDP-) sugar biosynthesis (_wecB_, _wecC_, _rffG_, _rfbA_, _rffC_, _rffA_), glucosyl to lipid transfer (_wecA_, _wecF_, _wecG_), and O-antigen processing (_wzzE_,  _wzxE_, _wzyE_). 
 
@@ -165,7 +165,7 @@ for f in *.fasta; do mafft ${f} > ${f%%.*}.mafft.fa; done
 | wzyE       | 0.0     |       -5.88                |negative   |
 | wecG       | 0.0     |       -6.83                |negative   |
 
-Almost all _Providencia_ used in the study have _galETKMR_ operon (except for _Providencia alcalifaciens_ strain 1701003) with the same genetic order and gene content
+Almost all _Providencia_ used in the study have _galETKMR_ operon (except for _Providencia alcalifaciens_ strain 1701003) with the same genetic order and gene content.
 
 |    Gene    | P-value |       Z(dN−dS)             | Selection |                
 | :---------:|:-------:| :-------------------------:|:---------:|
