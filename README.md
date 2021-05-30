@@ -177,7 +177,7 @@ Almost all _Providencia_ used in the study have _galETKMR_ operon (except for _P
 
 4. We did not observe a correlation between lifestyle and O-antigen operon organization as we initially expected. 
 
-[Presentation](https://github.com/rybinaanya/O-antigens/blob/main/O-antigens_presentation.pdf)
+For more details on results, check the [slides](https://github.com/rybinaanya/O-antigens/blob/main/O-antigens_presentation.pdf)
 
 ## Authors:
 
