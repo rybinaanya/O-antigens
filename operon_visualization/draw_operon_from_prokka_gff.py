@@ -26,6 +26,3 @@ def draw_operon_gff(prokka_gff, gff_without_fasta, start, stop):
     operon = graphic_record.crop((start, stop))
     operon.plot(figure_width=10, elevate_outline_annotations=False)
     plt.show()
-
-# Example
-draw_operon_gff("GCA_014295015.1.gff", "new_gff_file.gff", 2131035, 2135570)
