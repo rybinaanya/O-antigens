@@ -7,12 +7,19 @@ assemblies = ["GCA_000259175.1", "GCA_001874625.1", "GCA_010669105.1",
               "GCA_016618195.1", "GCA_900455075.1", "GCA_900635875.1"]
 
 # list of genes from conserved operons
-genes_from_conserved_operons = ['wecA', 'wecB', 'rffG', 'rffH', 'wecD', 'wecE',
-                                'wzxE', 'wecF', 'wzyE', 'wzzE', 'wecG', 'galE',
-                                'galT', 'galK', 'galM', 'galR']
+genes_from_conserved_operons = ['wecA', 'wzzE', 'wecB', 'wecC', 'rffG', 'rffH', 
+                                'wecD', 'wecE', 'wzxE', 'wecF', 'wzyE', 'wecG', 
+                                'galE', 'galT', 'galK', 'galM', 'galR']
 
 
 def record_multifasta(dir_with_assemblies, output_dir):
+    """
+    Write multi-FASTA files for each gene from the conserved operons
+    for each of the assemblies
+    :param dir_with_assemblies: path to folder with .fasta and .gff assemblies files
+    :param output_dir: path to folder where resulting FASTA files would be written to
+    :return: None
+    """
     for gene in genes_from_conserved_operons:
 
         # create fasta file for each gene
