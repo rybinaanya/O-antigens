@@ -1,6 +1,5 @@
 name: operons
 channels:
-  - anaconda
   - conda-forge
   - bioconda
   - defaults
