@@ -37,7 +37,7 @@ Python packages:
 
 __1. Download all _Providencia_ assemblies__
 
-In this project we download all _Providencia_ assemblies__ available to 04.03.2021 (204 assemblies)
+In this project we download all _Providencia_ assemblies available to 04.03.2021 (204 assemblies)
 
 __2. Check assemblies statistics__
 
