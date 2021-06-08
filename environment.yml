@@ -1,0 +1,16 @@
+name: operons
+channels:
+  - anaconda
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+ - python=3.8.8
+ - pandas=1.2.4
+ - numpy=1.20.1
+ - matplotlib=3.3.4
+ - biopython=1.78
+ - dna_features_viewer=3.0.3
+ - notebook=6.3.0
+ - prokka=1.14
+ - quast=5.0.2
