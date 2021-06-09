@@ -15,23 +15,12 @@ Goals of the project:
 ## Programs used in the study
 
 This project was performed with:
-* python v3.7
-* QUAST v5.0.2 (Gurevich A. et al., 2013)
-* Prokka v1.14 (Seemann T., 2014)
-* PGAP (Tatusova T. et al., 2016)
+* python v3.7 and all the required packages specified in the `environment.yml` file
 * [Operon-Mapper](https://biocomputo.ibt.unam.mx/operon_mapper/) (Blanca T. et al., 2018)
 * [BPROM](http://www.softberry.com/berry.phtml?topic=bprom&group=programs&subgroup=gfindb) (Solovyev V. et al., 2011)
 * [FindTerm](http://www.softberry.com/berry.phtml?topic=findterm&group=programs&subgroup=gfindb) (Solovyev V. et al., 2011)
 * [ORFfinder](https://www.ncbi.nlm.nih.gov/orffinder/) (Wheeler DL. et al., 2003)
-* MAFFT v7.475 (Katoh K., et al., 2002)
 * MEGAX v10.2.4 (Sudhir K. et al., 2018)
-
-Python packages:
-* Biopython v1.78 (Cock PA. et al., 2009)
-* dna-features-viewer v3.0.3 (Zulkowe V. et al., 2020)
-* matplotlib v3.3.4
-* numpy v1.20.1
-* pandas v1.2.3
 
 ## Workflow
 
@@ -41,42 +30,24 @@ __1. Setting up the environment__
 conda env create -f environment.yml
 conda activate operons
 ```
+__2. Processing the _Providencia_ assemblies__
 
-__2. Download all _Providencia_ assemblies__
+[This script](https://github.com/rybinaanya/O-antigens/blob/main/assembly_processing.sh) was used to work with assemblies, which includes:
+
+* Downloading all _Providencia_ assemblies
 
 In this project we downloaded all _Providencia_ assemblies available to 04.03.2021 (204 assemblies)
 
-__3. Check assemblies statistics__
+* Select the best assemblies, based on statistics:
+    - number of contigs
+    - Total length (>= 50000 bp)
+    - N50
+    - L50
 
-Use the following command:
-
-```bash
-quast ${directory_with_assemblies}/*.gz
-```
-
-or to save output in a certain directory, a script (example below):
-```bash
-#!/bin/bash
-
-path_downloaded_genomes=/home/rybina/O_antigens/ncbi_dataset/data/
-path_out=/home/rybina/O_antigens/quast_Providencia_ncbi/
-
-quast.py $(ls ${path_downloaded_genomes}/*.1/*fna) -o ${path_out} -t 10
-
-```
-
-__4. Select the best assemblies, based on statistics:__
-* number of contigs
-* Total length (>= 50000 bp)
-* N50
-* L50
-
-Within the framework of this project, we selected assembly of the best quality for each species (see a [jupyter notebook](https://github.com/rybinaanya/O-antigens/blob/main/select_assemblies.ipynb)).
-
-### Summary of selected assemblies
+#### Summary of selected assemblies (out of 204 assemblies)
 
 |   Assembly ID   | Organism Name                            |      Link                                                          |                                           
-| :--------------:|:--------------------------------------:| :-------------------------------------------------------------------:|
+| :--------------:|:----------------------------------------:| :-----------------------------------------------------------------:|
 | GCF_001874625.1 | Providencia rettgeri strain RB151        | [Assambly](https://www.ncbi.nlm.nih.gov/assembly/GCF_001874625.1/) |       
 | GCF_010669105.1 | Providencia stuartii strain MF1          | [Assambly](https://www.ncbi.nlm.nih.gov/assembly/GCF_010669105.1/) |    
 | GCF_000259175.1 | Providencia stuartii MRSN 2154           | [Assambly](https://www.ncbi.nlm.nih.gov/assembly/GCF_000259175.1/) |     
@@ -85,70 +56,34 @@ Within the framework of this project, we selected assembly of the best quality f
 | GCF_900455075.1 | Providencia rustigianii strain NCTC11802 | [Assambly](https://www.ncbi.nlm.nih.gov/assembly/GCF_900455075.1/) |    
 | GCF_900635875.1 | Providencia rustigianii strain NCTC6933  | [Assambly](https://www.ncbi.nlm.nih.gov/assembly/GCF_900635875.1/) |
 | GCF_014652175.1 | Providencia thailandensis KCTC 23281     | [Assambly](https://www.ncbi.nlm.nih.gov/assembly/GCF_014652175.1/) |  
-| GCA_013702025.1 | Providencia rettgeri strain 2055         | [Assambly](https://www.ncbi.nlm.nih.gov/assembly/GCF_013702025.1/) |    
+| GCA_013702025.1 | Providencia rettgeri strain 2055         | [Assambly](https://www.ncbi.nlm.nih.gov/assembly/GCF_013702025.1/) |  
 
-__5. Annotation__
-
-* Prokka
-```bash
-for file in ${directory_with_assemblies}/*.fna; do prokka --prefix "${file%.fna}"; done
-```
-
-or for specifying genus and name of output folder, run the command (you are in the working directory already):
-```bash
-for f in $(ls); do prokka --outdir  ${f}/${f}_prokka --force --genus Providencia --prefix ${f} ${f}/*.fna; done
-```
-
-__6. Identify operon boundaries with Operon-Mapper__
+* Annotation all selected assemblies with Prokka
+* PGAP
+  
+__3. Identify operon boundaries with Operon-Mapper__
 
 Upload genome FASTA file to the web-server and submit with default options. After job completion, download output compressed folder that includes list of predicted operons with their gene compostion, predicted ORFs coordinates and their DNA sequences and other files.
 
-__7. Search for candidate O-antigen operons__
+__4. Search for and visualize candidate O-antigen operons__
 
-For PGAP annotation, [Python script](https://github.com/rybinaanya/O-antigens/blob/main/operon_search_pgap.py) was used.
-Script for Prokka annotation is deposited [here](https://github.com/rybinaanya/O-antigens/blob/main/operon_search_prokka.py).
-
-__8. Validate boundaries of candidate O-antigen operons with BPROM and FindTerm__
-
-Sequence extraction was performed using [Python script](https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py)
-
-__9. Visualize O-antigen operons__
-
-All scripts and examples of figures available [here](https://github.com/rybinaanya/O-antigens/tree/main/operon_visualization).
+At this stage, we used a [script](https://github.com/rybinaanya/O-antigens/blob/main/operon_search_pgap.py) to search for candidate O-antigen operon genes from GFF annotation, the numbers of operons in which these genes are present, as well as the boundaries of these operons. Operon numbers and gff files were used in [this script]() to visualize candidate O-antigen operons.
 
 Example of operon search and operon visualization in _Xenorhabdus bovienii_ str. CS03 could be found [here](https://github.com/rybinaanya/O-antigens/blob/main/Xenorhabdus_bovienii_pgap_example.ipynb). 
 
-An example of visualization an operon obtained using a custom script:
+__5. (OPTIONAL) Validate boundaries of candidate O-antigen operons and find annotation of a gene__
 
-```python 
-from dna_features_viewer import GraphicFeature, GraphicRecord, BiopythonTranslator
+* In the case when the boundaries of operons are in doubt, we used [Python script](https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py) to extract  DNA fragment(operon edge) and its upstream and downstream 300-nucleotide region to validated boundaries using BPROM and FindTerm. 
 
+* Sometimes annotation of a gene was undefined. In that case, we extracted DNA fragment covering the respective gene using [Python script](https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py) and clarified annotation of resulting sequence using BLAST and ORFfinder.
 
-def draw_region_by_coordinates(gff_file, start_, end_):
-    biopython_translator = BiopythonTranslator()
-    biopython_translator.ignored_features_types = ['CDS']
-    biopython_translator.label_fields = ["gene", "product"]
-    graphic_record = biopython_translator.translate_record(gff_file)
+__6. Codon-based test of neutrality__
 
-    graphic_record.crop((start_, end_)).plot()
+* creating multi-FASTA files for each gene from the conserved operons. For this stage we used PGAP annotation, since its results are more accurate than those of Prokka.
+* running multiple sequence alignment on gene multi-FASTA files using MAFFT.
 
-draw_region_by_coordinates("GCA_016618195.1_ASM1661819v1_genomic.gff", 4103300, 4116180)
-```
+This two steps was implemented using [bash script]()
 
-![Z test wec](/operon_visualization/img/PGAP_gff.png)
-
-
-Sometimes annotation of a gene was undefined (as in the picture above: name for one gene is absent). In that case, we extracted DNA fragment covering the respective gene and its upstream and downstream 300-nucleotide region using [Python script](https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py) and clarified annotation of resulting sequence using BLAST and ORFfinder.
-
-
-__10. Codon-based test of neutrality__
-
-This stage of analysis includes:
-* creating multi-FASTA files for each gene from the conserved operons. Using [this script](https://github.com/rybinaanya/O-antigens/blob/main/record_multifasta.py), you can extract gene sequences by gene coordinates from a PROKKA gff file. To get sequences of conserved operon genes from PGAP gff annotation file, use [this script](https://github.com/rybinaanya/O-antigens/blob/main/get_conserved_operon_fasta_from_pgap.py). Resulting multi-FASTA files could be found [here](https://github.com/rybinaanya/O-antigens/tree/main/Z_test) 
-* running multiple sequence alignment on gene multi-FASTA files using MAFFT:
-```
-for f in *.fasta; do mafft ${f} > ${f%%.*}.mafft.fa; done
-```
 * computing the Z-test statistics of neutral evolution in MEGAX: syn-nonsynonymous substitution type and Nei-Gojobori (Jukes-Cantor) model were applied on 1000 bootstraps with pairwise deletion as gaps/missing data treatment
 
 
