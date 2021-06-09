@@ -1,7 +1,7 @@
 from Bio import SeqIO
 
 
-def extract_gene(path_to_fasta, start, stop, strand):
+def get_gene(path_to_fasta, start, stop, strand):
     """
     Function extract gene sequence from fasta file.
     Useful for BLAST searching.
