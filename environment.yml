@@ -13,3 +13,4 @@ dependencies:
  - notebook=6.3.0
  - prokka=1.14
  - quast=5.0.2
+ - mafft=7.475
