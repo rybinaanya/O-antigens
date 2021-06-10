@@ -12,7 +12,7 @@ def find_o_ag_genes_data_from_gff(gff_file, O_ag_gene_list, prokka=False):
     """
     Function gets data (start and end coordinates, strand (+,-)) on candidate O-antigen operon genes from GFF annotation
     using list of O-antigen operon genes defined from literature
-    :param gff_file: path to GFF annotation file (PGAP)
+    :param gff_file: path to GFF annotation file (PGAP or PROKKA)
     :param O_ag_gene_list: list of O-antigen operon genes defined from literature
     :param prokka: True or False; specifies type of GFF annotation
     :return: 2-D array with 4 columns: start coordinate, end coordinate, strand, gene name
@@ -94,7 +94,7 @@ def draw_region_by_coordinates(gff_file, start_, end_, prokka=False, gff_without
 
       # draw operon by new gff file
       graphic_record = BiopythonTranslator().translate_record(gff_without_fasta)
-      operon = graphic_record.crop((start, stop))
+      operon = graphic_record.crop((start_, end_))
       operon.plot(figure_width=10, elevate_outline_annotations=False)
       plt.show()
       
