@@ -81,47 +81,12 @@ Prokka:
 PGAP:
 ![pgap](/operon_visualization/img/PGAP_gb_two_contigs.png)
 
-* [by gff file from PGAP annotation](https://github.com/rybinaanya/O-antigens/blob/main/operon_visualization/draw_operons_from_pgap.py)
-                                
-```python 
-from dna_features_viewer import GraphicFeature, GraphicRecord, BiopythonTranslator
-
-
-def draw_region_by_coordinates(gff_file, start_, end_):
-    biopython_translator = BiopythonTranslator()
-    biopython_translator.ignored_features_types = ['CDS']
-    biopython_translator.label_fields = ["gene", "product"]
-    graphic_record = biopython_translator.translate_record(gff_file)
-
-    graphic_record.crop((start_, end_)).plot()
-
-draw_region_by_coordinates("GCA_016618195.1_ASM1661819v1_genomic.gff", 4103300, 4116180)
-```
+* [by gff file](https://github.com/rybinaanya/O-antigens/blob/main/operon_visualization/draw_operon_from_gff.py)
+   
+PGAP:
 ![pgap_gff](/operon_visualization/img/PGAP_gff.png)
 
-* [by gff file from Prokka annotation](https://github.com/rybinaanya/O-antigens/blob/main/operon_visualization/draw_operons_from_pgap.py)
-                                
-```python 
-from dna_features_viewer import BiopythonTranslator
-from matplotlib import pyplot as plt
-
-
-def draw_operon_gff(prokka_gff, gff_without_fasta, start, stop):
-    with open(prokka_gff, 'r') as gff_with_fasta:
-        with open(gff_without_fasta, 'w') as new_gff:
-            for line in gff_with_fasta:
-                if line.startswith("##FASTA"):
-                    break
-                new_gff.write(line)
-
-    graphic_record = BiopythonTranslator().translate_record(gff_without_fasta)
-    operon = graphic_record.crop((start, stop))
-    operon.plot(figure_width=10, elevate_outline_annotations=False)
-    plt.show()
-
-
-draw_operon_gff("GCA_016618195.1.gff", "new_gff_file.gff", 4103300, 4116180)
-```
+PROKKA:
 ![prokka_gff](/operon_visualization/img/prokka_gff.png)
 
 * [conserved operon from Prokka annotation](https://github.com/rybinaanya/O-antigens/blob/main/operon_visualization/draw_conserved_operon_prokka.py)
