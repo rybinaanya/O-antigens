@@ -83,6 +83,8 @@ if __name__ == '__main__':
   operons_df["Operon"] = operons_df["Operon"].ffill()
 
   selected_operons = find_o_ag_operon_numbers(operons_df, coord_genes_array)
+  
+  # Get boundaries coordinates of a pair of operons from 'selected_operons'
   start, end = get_operon_boundaries(operons_df, selected_operons[:2])
   
   # Visualize the first pair of operons from list 'selected_operons'
