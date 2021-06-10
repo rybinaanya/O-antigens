@@ -26,9 +26,6 @@ do
     fi
 done
 
-
-#for species in $(cat list_gal_assemblies); do echo "Looking for gal operon genes in ${species} assembly..."; python3 get_conserved_operon_fasta_2.py $(pwd)/Providencia_selected/${species}/*.gff $(pwd)/Providencia_selected/conserved_genes gal; echo "Done with ${species} assembly"; done
-
 echo -e "***All multi-fasta files with gal operon genes have been written and located in $(pwd)/Providencia_selected/conserved_genes\n"
 
 echo -e "***Starting to run mafft for all multi-fasta files\n"
