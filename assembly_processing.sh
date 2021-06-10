@@ -8,7 +8,6 @@ echo -e "Starting to download complete list of manually reviewed genomes (RefSeq
 echo -e $(yes "#" | head -n${count})'\n'
 
 wget ftp://ftp.ncbi.nlm.nih.gov//genomes/ASSEMBLY_REPORTS/assembly_summary_refseq.txt
-#wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/156/395/GCF_000156395.1_ASM15639v1/GCF_000156395.1_ASM15639v1_genomic.fna.gz
 
 echo -e "\n***Download is complete. File is located here: $(pwd)/assembly_summary_refseq.txt\n"
 
@@ -62,7 +61,6 @@ echo -e "Selecting best Providencia assemblies"
 echo -e $(yes "#" | head -n${count})'\n'
 
 echo -e "***Getting data on Providencia organism names and assembly IDs\n"
-#grep -E 'Providencia' assembly_summary_refseq.txt | grep -v 'phage' | cut -f1,8,9,20 |  awk 'BEGIN{FS=OFS="/";filesuffix="genomic.gff.gz"}{ftpdir=$0;asm=$10;file=asm"_"filesuffix;print "wget "ftpdir,file}'  - > Providencia_strains.txt
 grep -E 'Providencia' assembly_summary_refseq.txt | grep -v 'phage' | cut -f1,8,9,20 > Providencia_strains.txt
 echo -e "***Temporal file $(pwd)/Providencia_strains.txt has been created\n"
 
@@ -104,12 +102,6 @@ echo -e $(yes "#" | head -n${count})'\n'
 echo -e "***Entering $(pwd)/Providencia_selected\n"
 echo -e "***Starting to run PROKKA...\n"
 
-for f in $(ls); do gunzip ${f}/*.fna.gz; prokka --outdir  ${f}/${f}_prokka --force --genus Providencia --prefix ${f} ${f}/*.fna; done
+for f in $(ls); do gunzip ${f}/*.gff.gz; gunzip ${f}/*.fna.gz; prokka --outdir  ${f}/${f}_prokka --force --genus Providencia --prefix ${f} ${f}/*.fna; done
 
 echo -e "*** Annotation via PROKKA is done. Check folders at $(pwd)"
-# download selected annotations
-# downnload fasta 
-# running prokka
-# create data on all assemblies that we downloaded name assembly link
-# removing download files sh
-### insert to sccipt that we gunzip gff and fna 
