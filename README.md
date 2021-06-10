@@ -92,10 +92,10 @@ __5. (OPTIONAL) Validate boundaries of candidate O-antigen operons and find anno
 
 __6. Codon-based test of neutrality__
 
-* creating multi-FASTA files for each gene from the conserved operons. For this stage we used PGAP annotation, since its results are more accurate than those of Prokka.
-* running multiple sequence alignment on gene multi-FASTA files using MAFFT.
+* creating multi-FASTA files for each gene from the conserved operons. For this stage we used PGAP annotation, since its results are more accurate than those of Prokka; obtained multi-FASTA files are deposited [here](https://github.com/rybinaanya/O-antigens/tree/main/Z_test)
+* running multiple sequence alignment on gene multi-FASTA files using MAFFT
 
-This two steps was implemented using [bash script]()
+This two steps was implemented using [bash script](https://github.com/rybinaanya/O-antigens/blob/main/align_conserved_operon_genes.sh)
 
 * computing the Z-test statistics of neutral evolution in MEGAX: syn-nonsynonymous substitution type and Nei-Gojobori (Jukes-Cantor) model were applied on 1000 bootstraps with pairwise deletion as gaps/missing data treatment
 
