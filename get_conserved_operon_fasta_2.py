@@ -202,10 +202,3 @@ def write_gene_fasta_files(conserved_genes, lst_new_records, output_folder):
 if __name__ == '__main__':
     lst_records = get_conserved_genes_seq(gff_file, conserved_operon)
     write_gene_fasta_files(conserved_genes, lst_records, output_folder)
-#     # write gal genes
-#     #lst_gal_records = get_conserved_genes_seq(gff_file, "gal")
-#     #write_gene_fasta_files(conserved_genes, lst_gal_records, output_folder)
-#     #
-#     # write wec genes
-#     lst_wec_records = get_conserved_genes_seq(gff_file, "wec")
-#     write_gene_fasta_files(conserved_genes, lst_wec_records, output_folder)
