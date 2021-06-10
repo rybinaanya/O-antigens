@@ -82,7 +82,7 @@ __4. Search for and visualize candidate O-antigen operons__
 
 At this stage, we used a [script](https://github.com/rybinaanya/O-antigens/blob/main/search_visualize_operons.py) to search for candidate O-antigen operon genes from GFF annotation, the numbers of operons in which these genes are present, as well as the boundaries of these operons. Operon numbers and gff files were used to visualize candidate O-antigen operons.
 
-Example of operon search and operon visualization in _Xenorhabdus bovienii_ str. CS03 could be found [here](https://github.com/rybinaanya/O-antigens/blob/main/Xenorhabdus_bovienii_pgap_example.ipynb). 
+Example of operon search and operon visualization in _Xenorhabdus_ could be found [here](https://github.com/rybinaanya/O-antigens/blob/main/Examples/Xenorhabdus_example.ipynb). 
 
 __5. (OPTIONAL) Validate boundaries of candidate O-antigen operons and find annotation of a gene__
 
