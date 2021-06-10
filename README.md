@@ -27,39 +27,52 @@ This project was performed with:
 __1. Setting up the environment__
 
 ```bash
+git clone https://github.com/rybinaanya/O-antigens
+cd O-antigens
 conda env create -f environment.yml
 conda activate operons
 ```
+
+All downstream steps should be performed at `O-antigens` directory. 
+
 __2. Processing the _Providencia_ assemblies__
 
-[This script](https://github.com/rybinaanya/O-antigens/blob/main/assembly_processing.sh) was used to work with assemblies, which includes:
+[This script](https://github.com/rybinaanya/O-antigens/blob/main/process_assemblies.sh) was used to work with assemblies:
+
+```bash
+bash process_assemblies.sh
+```
+
+This step includes:
 
 * Downloading all _Providencia_ assemblies
 
 In this project we downloaded all _Providencia_ assemblies available to 04.03.2021 (204 assemblies)
 
-* Select the best assemblies, based on statistics:
+* Selecting the best assemblies, based on statistics:
     - number of contigs
     - Total length (>= 50000 bp)
     - N50
     - L50
 
+
+
 #### Summary of selected assemblies (out of 204 assemblies)
 
 |   Assembly ID   | Organism Name                            |      Link                                                          |                                           
 | :--------------:|:----------------------------------------:| :-----------------------------------------------------------------:|
-| GCF_001874625.1 | Providencia rettgeri strain RB151        | [Assambly](https://www.ncbi.nlm.nih.gov/assembly/GCF_001874625.1/) |       
-| GCF_010669105.1 | Providencia stuartii strain MF1          | [Assambly](https://www.ncbi.nlm.nih.gov/assembly/GCF_010669105.1/) |    
-| GCF_000259175.1 | Providencia stuartii MRSN 2154           | [Assambly](https://www.ncbi.nlm.nih.gov/assembly/GCF_000259175.1/) |     
-| GCA_016618195.1 | Providencia vermicola strain LLDRA6      | [Assambly](https://www.ncbi.nlm.nih.gov/assembly/GCA_016618195.1/) |     
-| GCF_013702185.1 | Providencia alcalifaciens strain 1701003 | [Assambly](https://www.ncbi.nlm.nih.gov/assembly/GCF_013702185.1/) |     
-| GCF_900455075.1 | Providencia rustigianii strain NCTC11802 | [Assambly](https://www.ncbi.nlm.nih.gov/assembly/GCF_900455075.1/) |    
-| GCF_900635875.1 | Providencia rustigianii strain NCTC6933  | [Assambly](https://www.ncbi.nlm.nih.gov/assembly/GCF_900635875.1/) |
-| GCF_014652175.1 | Providencia thailandensis KCTC 23281     | [Assambly](https://www.ncbi.nlm.nih.gov/assembly/GCF_014652175.1/) |  
-| GCA_013702025.1 | Providencia rettgeri strain 2055         | [Assambly](https://www.ncbi.nlm.nih.gov/assembly/GCF_013702025.1/) |  
+| GCF_001874625.1 | Providencia rettgeri strain RB151        | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_001874625.1/) |       
+| GCF_010669105.1 | Providencia stuartii strain MF1          | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_010669105.1/) |    
+| GCF_000259175.1 | Providencia stuartii MRSN 2154           | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_000259175.1/) |     
+| GCA_016618195.1 | Providencia vermicola strain LLDRA6      | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCA_016618195.1/) |     
+| GCF_013702185.1 | Providencia alcalifaciens strain 1701003 | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_013702185.1/) |     
+| GCF_900455075.1 | Providencia rustigianii strain NCTC11802 | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_900455075.1/) |    
+| GCF_900635875.1 | Providencia rustigianii strain NCTC6933  | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_900635875.1/) |
+| GCF_014652175.1 | Providencia thailandensis KCTC 23281     | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_014652175.1/) |  
+| GCA_013702025.1 | Providencia rettgeri strain 2055         | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_013702025.1/) |  
 
-* Annotation all selected assemblies with Prokka
-* PGAP
+* Annotating all selected assemblies with Prokka
+* Retrieving PGAP annotation from NCBI
   
 __3. Identify operon boundaries with Operon-Mapper__
 
@@ -67,15 +80,15 @@ Upload genome FASTA file to the web-server and submit with default options. Afte
 
 __4. Search for and visualize candidate O-antigen operons__
 
-At this stage, we used a [script](https://github.com/rybinaanya/O-antigens/blob/main/operon_search_pgap.py) to search for candidate O-antigen operon genes from GFF annotation, the numbers of operons in which these genes are present, as well as the boundaries of these operons. Operon numbers and gff files were used in [this script]() to visualize candidate O-antigen operons.
+At this stage, we used a [script](https://github.com/rybinaanya/O-antigens/blob/main/search_visualize_operons.py) to search for candidate O-antigen operon genes from GFF annotation, the numbers of operons in which these genes are present, as well as the boundaries of these operons. Operon numbers and gff files were used to visualize candidate O-antigen operons.
 
 Example of operon search and operon visualization in _Xenorhabdus bovienii_ str. CS03 could be found [here](https://github.com/rybinaanya/O-antigens/blob/main/Xenorhabdus_bovienii_pgap_example.ipynb). 
 
 __5. (OPTIONAL) Validate boundaries of candidate O-antigen operons and find annotation of a gene__
 
-* In the case when the boundaries of operons are in doubt, we used [Python script](https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py) to extract  DNA fragment(operon edge) and its upstream and downstream 300-nucleotide region to validated boundaries using BPROM and FindTerm. 
+* In the case when the boundaries of operons are in doubt, we used [Python script](https://github.com/rybinaanya/O-antigens/blob/main/get_sequence.py) to extract  DNA fragment(operon edge) and its upstream and downstream 300-nucleotide region to validated boundaries using BPROM and FindTerm. 
 
-* Sometimes annotation of a gene was undefined. In that case, we extracted DNA fragment covering the respective gene using [Python script](https://github.com/rybinaanya/O-antigens/blob/main/extract_sequence.py) and clarified annotation of resulting sequence using BLAST and ORFfinder.
+* Sometimes annotation of a gene was undefined. In that case, we extracted DNA fragment covering the respective gene using [Python script](https://github.com/rybinaanya/O-antigens/blob/main/get_sequence.py) and clarified annotation of resulting sequence using BLAST and ORFfinder.
 
 __6. Codon-based test of neutrality__
 
