@@ -7,25 +7,39 @@ O_ag_gene_list = ['yibK', 'wzc', 'wzb', 'wza', 'galE', 'gne', 'wpaD',
                   'qdtA', 'rmlA', 'qdtf', 'cpxA', 'wec', 'rffG', 'rffH']
 
 
-def find_o_ag_genes_data_from_gff(gff_file, O_ag_gene_list):
+def find_o_ag_genes_data_from_gff(gff_file, O_ag_gene_list, prokka=False):
     """
     Function gets data (start and end coordinates, strand (+,-)) on candidate O-antigen operon genes from GFF annotation
     using list of O-antigen operon genes defined from literature
     :param gff_file: path to GFF annotation file (PGAP)
     :param O_ag_gene_list: list of O-antigen operon genes defined from literature
+    :param prokka: True or False; specifies type of GFF annotation
     :return: 2-D array with 4 columns: start coordinate, end coordinate, strand, gene name
     """
+    if prokka:
+        with open(gff_file) as gff_with_fasta:
+            i = 0
+            for line in gff_with_fasta:
+                i += 1
+                if line.startswith("##FASTA"):
+                    start_fasta = i
+            end_fasta = i
 
-    ncbi_gff = pd.read_csv(gff_file,
-                           sep='\t', comment="#").dropna()
-    ncbi_gff.columns = [i for i in range(1, len(ncbi_gff.columns) + 1)]
-    ncbi_gff_gene = ncbi_gff.loc[ncbi_gff[3] == 'gene']
-    ncbi_gff_gene.loc[:, 10] = ncbi_gff_gene[9].apply(lambda x: x.split('Name=')[1].split(';')[0])
+        ncbi_gff = pd.read_csv(gff_file,
+                               sep='\t', comment="#", skipfooter=end_fasta - start_fasta + 1).dropna()
+        ncbi_gff.columns = [i for i in range(1, len(ncbi_gff.columns) + 1)]
+        ncbi_gff_gene = ncbi_gff.loc[ncbi_gff[9].str.contains('Name=')]
+        ncbi_gff_gene[10] = ncbi_gff_gene[9].apply(lambda x: x.split('Name=')[1].split(';')[0])
+
+    else:
+        ncbi_gff = pd.read_csv(gff_file, sep='\t', comment="#").dropna()
+        ncbi_gff.columns = [i for i in range(1, len(ncbi_gff.columns) + 1)]
+        ncbi_gff_gene = ncbi_gff.loc[ncbi_gff[3] == 'gene']
+        ncbi_gff_gene.loc[:, 10] = ncbi_gff_gene[9].apply(lambda x: x.split('Name=')[1].split(';')[0])
 
     return ncbi_gff_gene[
                ncbi_gff_gene[9].apply(lambda x: any([k in x for k in O_ag_gene_list]))
            ].loc[:, [4, 5, 7, 10]].to_numpy()
-
 
 
 def find_o_ag_operon_numbers(operons_df, coord_genes_array):
