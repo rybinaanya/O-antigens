@@ -75,7 +75,7 @@ In this project we downloaded all _Providencia_ assemblies available to 04.03.20
   
 __3. Identify operon boundaries with Operon-Mapper__
 
-Upload genome FASTA file to the web-server and submit with default options. After job completion, download output compressed folder that includes list of predicted operons with their gene compostion, predicted ORFs coordinates and their DNA sequences and other files.
+Upload genome FASTA file to the web-server and submit with default options. After job completion, download output compressed folder that includes list of predicted operons with their gene compostion, predicted ORFs coordinates and their DNA sequences, and other files.
 
 __4. Search for and visualize candidate O-antigen operons__
 
