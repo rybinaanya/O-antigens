@@ -202,7 +202,7 @@ if __name__ == '__main__':
                            'wzxE', 'wecF', 'wzyE', 'wecG']
 
         write_gene_fasta_files(conserved_genes, lst_records, output_folder)
-    else:
+    if conserved_operon == 'gal':
         conserved_genes = ['galE', 'galT', 'galK', 'galM', 'galR']
         write_gene_fasta_files(conserved_genes, lst_records, output_folder)
     
