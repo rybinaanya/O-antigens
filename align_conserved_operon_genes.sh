@@ -4,10 +4,6 @@ echo -e "\n***Creating a folder to which .fasta files would be saved...\n"
 mkdir $(pwd)/Providencia_selected/conserved_genes
 echo -e "***Folder has been created\n"
 
-echo -e «\n***Unzip all .gff files for each species\n»
-for f in $(pwd)/Providencia_selected/*; do 
-	gunzip ${f}/*.gff.gz; done
-
 echo -e "***Starting to run python script get_conserved_operon_fasta.py to extract conserved wec operon genes\n"
 for species in $(pwd)/Providencia_selected/GCF*; do echo "Looking for wec operon genes in ${species} assembly..."; python3 get_conserved_operon_fasta.py "${species}"/*.gff $(pwd)/Providencia_selected/conserved_genes wec; echo -e "Done with ${species} assembly\n"; done
 echo -e "***All multi-fasta files with wec operon genes have been written and located in $(pwd)/Providencia_selected/conserved_genes\n"
