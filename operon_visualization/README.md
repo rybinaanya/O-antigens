@@ -1,6 +1,6 @@
-This folder contains python scripts used for visualizing candidate O-antigen operons 
+If you don't use the automatic method for for visualizing candidate O-antigen operons, you can use scripts from this folder, where the arguments are passed manually.
 
-The project used two annotations(Prokka and PGAP), which have some differences in the gb file structure. Therefore, to visualize the operons, we created scripts that use the files of each annotation.
+Prokka and PGAP annotations have some differences in the gb and gff file structure. Therefore, to visualize the operons, we created scripts that use the files of each annotation.
 
 An examples of visualization an operon using a custom script:
 * [by gb files from Prokka and PGAP annotations](https://github.com/rybinaanya/O-antigens/blob/main/operon_visualization/draw_operon_from_gb.py) with one contig assemblies 
