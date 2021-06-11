@@ -92,7 +92,7 @@ __6. Codon-based test of neutrality__
 * creating multi-FASTA files for each gene from the conserved operons. For this stage, we used PGAP annotation since its results are more accurate than those of Prokka; obtained multi-FASTA files are deposited [here](https://github.com/rybinaanya/O-antigens/tree/main/Z_test)
 * running multiple sequence alignment on gene multi-FASTA files using MAFFT
 
-These two steps were implemented in [bash script](https://github.com/rybinaanya/O-antigens/blob/main/align_conserved_operon_genes.sh)
+These two steps were implemented in [bash script](https://github.com/rybinaanya/O-antigens/blob/main/align_conserved_operon_genes.sh):
 
 ```bash
 bash align_conserved_operon_genes.sh
