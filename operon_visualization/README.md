@@ -1,4 +1,4 @@
-If you don't use the automatic method for for visualizing candidate O-antigen operons, you can use scripts from this folder, where the arguments are passed manually.
+If you don't use the [automatic method](https://github.com/rybinaanya/O-antigens/blob/main/search_visualize_operons.py) for for visualizing candidate O-antigen operons, you can use scripts from this folder, where the arguments are passed manually.
 
 Prokka and PGAP annotations have some differences in the gb and gff file structure. Therefore, to visualize the operons, we created scripts that use the files of each annotation.
 
