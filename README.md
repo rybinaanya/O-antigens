@@ -16,7 +16,7 @@ Goals of the project:
 
 This project was performed with:
 * python v3.7 and all the required packages specified in the `environment.yml` file
-* [Operon-Mapper](https://biocomputo.ibt.unam.mx/operon_mapper/) (Blanca T. et al., 2018)
+* [Operon-Mapper](https://biocomputo.ibt.unam.mx/operon_mapper/) (Taboada B. et al., 2018)
 * [BPROM](http://www.softberry.com/berry.phtml?topic=bprom&group=programs&subgroup=gfindb) (Solovyev V. et al., 2011)
 * [FindTerm](http://www.softberry.com/berry.phtml?topic=findterm&group=programs&subgroup=gfindb) (Solovyev V. et al., 2011)
 * [ORFfinder](https://www.ncbi.nlm.nih.gov/orffinder/) (Wheeler DL. et al., 2003)
@@ -55,21 +55,19 @@ In this project we downloaded all _Providencia_ assemblies available to 04.03.20
     - N50
     - L50
 
-
-
 #### Summary of selected assemblies (out of 204 assemblies)
 
-|   Assembly ID   | Organism Name                            |      Link                                                          |                                           
-| :--------------:|:----------------------------------------:| :-----------------------------------------------------------------:|
-| GCF_001874625.1 | Providencia rettgeri strain RB151        | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_001874625.1/) |       
-| GCF_010669105.1 | Providencia stuartii strain MF1          | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_010669105.1/) |    
-| GCF_000259175.1 | Providencia stuartii MRSN 2154           | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_000259175.1/) |     
-| GCA_016618195.1 | Providencia vermicola strain LLDRA6      | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCA_016618195.1/) |     
-| GCF_013702185.1 | Providencia alcalifaciens strain 1701003 | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_013702185.1/) |     
-| GCF_900455075.1 | Providencia rustigianii strain NCTC11802 | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_900455075.1/) |    
-| GCF_900635875.1 | Providencia rustigianii strain NCTC6933  | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_900635875.1/) |
-| GCF_014652175.1 | Providencia thailandensis KCTC 23281     | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_014652175.1/) |  
-| GCA_013702025.1 | Providencia rettgeri strain 2055         | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_013702025.1/) |  
+| Assembly ID   |Organism Name                           |Total length|Contigs|  N50  |L50|                     Link                                           |                                           
+|:-------------:|:--------------------------------------:|:----------:|:-----:|:-----:|:-:|:------------------------------------------------------------------:|
+|GCF_001874625.1|Providencia rettgeri strain RB151       |  4889093   |2      |4780676|1  | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_001874625.1/) |       
+|GCF_010669105.1|Providencia stuartii strain MF1         |  4528609   |2      |4525926|1  | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_010669105.1/) |    
+|GCF_000259175.1|Providencia stuartii MRSN 2154          |  4402109   |1      |4402109|1  | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_000259175.1/) |     
+|GCA_016618195.1|Providencia vermicola strain LLDRA6     |  4342370   |1      |4342370|1  | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCA_016618195.1/) |     
+|GCF_013702185.1|Providencia alcalifaciens strain 1701003|  4033976   |1      |4033976|1  | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_013702185.1/) |     
+|GCF_900455075.1|Providencia rustigianii strain NCTC11802|  3969308   |3      |3926179|1  | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_900455075.1/) |    
+|GCF_900635875.1|Providencia rustigianii strain NCTC6933 |  3913850   |1      |3913850|1  | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_900635875.1/) |
+|GCF_014652175.1|Providencia thailandensis KCTC 23281    |  4342585   |3      |484316 |3  | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_014652175.1/) |  
+|GCA_013702025.1|Providencia rettgeri strain 2055        |  4674814   |1      |4674814|1  | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_013702025.1/) |  
 
 * Annotating all selected assemblies with Prokka
 * Retrieving PGAP annotation from NCBI
@@ -80,15 +78,13 @@ Upload genome FASTA file to the web-server and submit with default options. Afte
 
 __4. Search for and visualize candidate O-antigen operons__
 
-At this stage, we used a [script](https://github.com/rybinaanya/O-antigens/blob/main/search_visualize_operons.py) to search for candidate O-antigen operon genes from GFF annotation, the numbers of operons in which these genes are present, as well as the boundaries of these operons. Operon numbers and gff files were used to visualize candidate O-antigen operons.
+At this stage, we used [Python script](https://github.com/rybinaanya/O-antigens/blob/main/search_visualize_operons.py) to search for candidate O-antigen operon genes from GFF annotation, the numbers of operons in which these genes are present, as well as the boundaries of these operons. Operon numbers and gff files were used to visualize candidate O-antigen operons.
 
 Example of operon search and operon visualization in _Xenorhabdus_ could be found [here](https://github.com/rybinaanya/O-antigens/blob/main/Examples/Xenorhabdus_example.ipynb). 
 
 __5. (OPTIONAL) Validate boundaries of candidate O-antigen operons and find annotation of a gene__
 
-* In the case when the boundaries of operons are in doubt, we used [Python script](https://github.com/rybinaanya/O-antigens/blob/main/get_sequence.py) to extract  DNA fragment(operon edge) and its upstream and downstream 300-nucleotide region to validated boundaries using BPROM and FindTerm. 
-
-* Sometimes annotation of a gene was undefined. In that case, we extracted DNA fragment covering the respective gene using [Python script](https://github.com/rybinaanya/O-antigens/blob/main/get_sequence.py) and clarified annotation of resulting sequence using BLAST and ORFfinder.
+In the case when the boundaries of operons are in doubt and if annotation of a gene was undefined, we used [this script](https://github.com/rybinaanya/O-antigens/blob/main/get_sequence.py) to extract DNA fragment to validate boundaries using BPROM and FindTerm and to clarify annotation using BLAST and ORFfinder.
 
 __6. Codon-based test of neutrality__
 
@@ -153,13 +149,7 @@ Applied Genomics Laboratory, SCAMT Institute, ITMO University, 191002 Saint-Pete
 3. Ovchinnikova, Olga G., Bin Liu, Dan Guo, Nina A. Kocharova, Magdalena Bialczak-Kokot, Alexander S. Shashkov, Lu Feng, Antoni Rozalski, Lei Wang, and Yuriy A. Knirel. 2012. “Structural, Serological, and Genetic Characterization of the O-Antigen of Providencia Alcalifaciens O40.” FEMS Immunology and Medical Microbiology 66 (3): 382–92.
 4. Samuel, Gabrielle, and Peter Reeves. 2003. “Biosynthesis of O-Antigens: Genes and Pathways Involved in Nucleotide Sugar Precursor Synthesis and O-Antigen Assembly.” Carbohydrate Research 338 (23): 2503–19.
 5. Wang, Lei, Quan Wang, and Peter R. Reeves. 2010. “The Variation of O Antigens in Gram-Negative Bacteria.” Sub-Cellular Biochemistry 53: 123–52.
-6. Alexey Gurevich, Vladislav Saveliev, Nikolay Vyahhi and Glenn Tesler. QUAST: quality assessment tool for genome assemblies, Bioinformatics (2013) 29 (8): 1072-1075. doi: 10.1093/bioinformatics/btt086
-7. Torsten Seemann, Prokka: rapid prokaryotic genome annotation, Bioinformatics, Volume 30, Issue 14, 15 July 2014, Pages 2068–2069, doi: 10.1093/bioinformatics/btu153
-8. Tatusova T, DiCuccio M, Badretdin A, Chetvernin V, Nawrocki EP, Zaslavsky L, Lomsadze A, Pruitt KD, Borodovsky M, Ostell J. NCBI prokaryotic genome annotation pipeline. Nucleic Acids Res. 2016 Aug 19;44(14):6614-24. doi: 10.1093/nar/gkw569
-9. Blanca Taboada, Karel Estrada, Ricardo Ciria, Enrique Merino, Operon-mapper: a web server for precise operon identification in bacterial and archaeal genomes, Bioinformatics, Volume 34, Issue 23, 01 December 2018, Pages 4118–4120, doi: 10.1093/bioinformatics/bty496
-10. V. Solovyev & A Salamov (2011) Automatic Annotation of Microbial Genomes and Metagenomic Sequences. In Metagenomics and its Applications in Agriculture, Biomedicine and Environmental Studies (Ed. R.W. Li), Nova Science Publishers, p. 61-78
-11. Wheeler DL, Church DM, Federhen S, et al. Database resources of the National Center for Biotechnology. Nucleic Acids Res. 2003;31(1):28-33. doi:10.1093/nar/gkg033
-12. Katoh K, Misawa K, Kuma K, Miyata T. MAFFT: a novel method for rapid multiple sequence alignment based on fast Fourier transform. Nucleic Acids Res. 2002;30(14):3059-3066. doi:10.1093/nar/gkf436
-13. Sudhir Kumar, Glen Stecher, Michael Li, Christina Knyaz, Koichiro Tamura, MEGA X: Molecular Evolutionary Genetics Analysis across Computing Platforms, Molecular Biology and Evolution, Volume 35, Issue 6, June 2018, Pages 1547–1549, doi: /10.1093/molbev/msy096
-14. Cock PA, Antao T, Chang JT, Chapman BA, Cox CJ, Dalke A, Friedberg I, Hamelryck T, Kauff F, Wilczynski B and de Hoon MJL (2009) Biopython: freely available Python tools for computational molecular biology and bioinformatics. Bioinformatics, 25, 1422-1423
-15. Valentin Zulkower, Susan Rosser, DNA Features Viewer: a sequence annotation formatting and plotting library for Python, Bioinformatics, Volume 36, Issue 15, 1 August 2020, Pages 4350–4352, doi: 10.1093/bioinformatics/btaa213
+6. Blanca Taboada, Karel Estrada, Ricardo Ciria, Enrique Merino, Operon-mapper: a web server for precise operon identification in bacterial and archaeal genomes, Bioinformatics, Volume 34, Issue 23, 01 December 2018, Pages 4118–4120, doi: 10.1093/bioinformatics/bty496
+7. V. Solovyev & A Salamov (2011) Automatic Annotation of Microbial Genomes and Metagenomic Sequences. In Metagenomics and its Applications in Agriculture, Biomedicine and Environmental Studies (Ed. R.W. Li), Nova Science Publishers, p. 61-78
+8. Wheeler DL, Church DM, Federhen S, et al. Database resources of the National Center for Biotechnology. Nucleic Acids Res. 2003;31(1):28-33. doi:10.1093/nar/gkg033
+9. Sudhir Kumar, Glen Stecher, Michael Li, Christina Knyaz, Koichiro Tamura, MEGA X: Molecular Evolutionary Genetics Analysis across Computing Platforms, Molecular Biology and Evolution, Volume 35, Issue 6, June 2018, Pages 1547–1549, doi: /10.1093/molbev/msy096
