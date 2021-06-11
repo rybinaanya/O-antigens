@@ -93,6 +93,10 @@ __6. Codon-based test of neutrality__
 
 This two steps was implemented using [bash script](https://github.com/rybinaanya/O-antigens/blob/main/align_conserved_operon_genes.sh)
 
+```bash
+bash align_conserved_operon_genes.sh
+```
+
 * computing the Z-test statistics of neutral evolution in MEGAX: syn-nonsynonymous substitution type and Nei-Gojobori (Jukes-Cantor) model were applied on 1000 bootstraps with pairwise deletion as gaps/missing data treatment
 
 
