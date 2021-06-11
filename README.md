@@ -8,14 +8,14 @@ This project aims to identify and compare candidate O-antigen operons in bacteri
 
 Goals of the project:
 * to find genes of O-antigen biosynthesis in the _Providencia_ and _Xenorhabdus_ species analyzing the literature;
-* to analyze the quality of all _Providencia_ assemblies available at NCBI (204 assemblies) and select the best one for each species;
+* to analyze the quality of all _Providencia_ assemblies available at NCBI and select the best one for each species;
 * to create and test the pipeline for identifying and visualizing O-antigen operons;
 * to compare candidate O-antigen operons in selected _Providencia_ and _Xenorhabdus_ species;
 
 ## Programs used in the study
 
 This project was performed with:
-* python v3.7 and all the required packages specified in the `environment.yml` file
+* python v3.7; all required packages are specified in the `environment.yml` file
 * [Operon-Mapper](https://biocomputo.ibt.unam.mx/operon_mapper/) (Taboada B. et al., 2018)
 * [BPROM](http://www.softberry.com/berry.phtml?topic=bprom&group=programs&subgroup=gfindb) (Solovyev V. et al., 2011)
 * [FindTerm](http://www.softberry.com/berry.phtml?topic=findterm&group=programs&subgroup=gfindb) (Solovyev V. et al., 2011)
@@ -55,7 +55,7 @@ In this project we downloaded all _Providencia_ assemblies available to 04.03.20
     - N50
     - L50
 
-#### Summary of selected assemblies (out of 204 assemblies)
+#### Summary of selected assemblies (out of 204 assemblies available to 04.03.2021 at NCBI)
 
 | Assembly ID   |Organism Name                           |Total length|Contigs|  N50  |L50|                     Link                                           |                                           
 |:-------------:|:--------------------------------------:|:----------:|:-----:|:-----:|:-:|:------------------------------------------------------------------:|
