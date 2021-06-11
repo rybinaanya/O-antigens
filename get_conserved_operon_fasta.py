@@ -8,11 +8,6 @@ gff_file = sys.argv[1]
 output_folder = sys.argv[2]
 conserved_operon = sys.argv[3]
 
-conserved_genes = ['wecA', 'wzzE', 'wecB', 'wecC', 'rffG', 'rffH', 
-                   'wecD', 'wecE', 'wzxE', 'wecF', 'wzyE', 'wecG', 
-                   'galE', 'galT', 'galK', 'galM', 'galR']
-
-
 dict_conserved_genes = {
     'wecA': 'wecA',
     'wzzE': 'wzzE',
@@ -201,4 +196,13 @@ def write_gene_fasta_files(conserved_genes, lst_new_records, output_folder):
 
 if __name__ == '__main__':
     lst_records = get_conserved_genes_seq(gff_file, conserved_operon)
-    write_gene_fasta_files(conserved_genes, lst_records, output_folder)
+    if conserved_operon == 'wec':
+        conserved_genes = ['wecA', 'wzzE', 'wecB', 'wecC',
+                           'rffG', 'rffH', 'wecD', 'wecE',
+                           'wzxE', 'wecF', 'wzyE', 'wecG']
+
+        write_gene_fasta_files(conserved_genes, lst_records, output_folder)
+    else:
+        conserved_genes = ['galE', 'galT', 'galK', 'galM', 'galR']
+        write_gene_fasta_files(conserved_genes, lst_records, output_folder)
+    
