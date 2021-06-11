@@ -58,7 +58,7 @@ In this project we downloaded all _Providencia_ assemblies available to 04.03.20
 #### Summary of selected assemblies (out of 204 assemblies available to 04.03.2021 at NCBI)
 
 | Assembly ID   |Organism Name                           |Total length|Contigs|  N50  |L50|                     Link                                           |                                           
-|:-------------:|:--------------------------------------:|:----------:|:-----:|:-----:|:-:|:------------------------------------------------------------------:|
+|:-------------:|:----------------------------------------:|:----------:|:-----:|:-----:|:-:|:------------------------------------------------------------------:|
 |GCF_001874625.1|Providencia rettgeri strain RB151       |  4889093   |2      |4780676|1  | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_001874625.1/) |       
 |GCF_010669105.1|Providencia stuartii strain MF1         |  4528609   |2      |4525926|1  | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_010669105.1/) |    
 |GCF_000259175.1|Providencia stuartii MRSN 2154          |  4402109   |1      |4402109|1  | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_000259175.1/) |     
@@ -69,8 +69,9 @@ In this project we downloaded all _Providencia_ assemblies available to 04.03.20
 |GCF_014652175.1|Providencia thailandensis KCTC 23281    |  4342585   |3      |484316 |3  | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_014652175.1/) |  
 |GCF_013702025.1|Providencia rettgeri strain 2055        |  4674814   |1      |4674814|1  | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_013702025.1/) |  
 
+* Retrieving PGAP annotation of selected assemblies from NCBI 
 * Annotating all selected assemblies with Prokka
-* Retrieving PGAP annotation from NCBI
+
   
 __3. Identify operon boundaries with Operon-Mapper__
 
@@ -78,20 +79,20 @@ Upload genome FASTA file to the web-server and submit with default options. Afte
 
 __4. Search for and visualize candidate O-antigen operons__
 
-At this stage, we used [Python script](https://github.com/rybinaanya/O-antigens/blob/main/search_visualize_operons.py) to search for candidate O-antigen operon genes from GFF annotation, the numbers of operons in which these genes are present, as well as the boundaries of these operons. Operon numbers and gff files were used to visualize candidate O-antigen operons.
+At this stage, we used [Python script](https://github.com/rybinaanya/O-antigens/blob/main/search_visualize_operons.py) to search for candidate O-antigen operon genes from GFF annotation, the numbers of operons in which these genes are present, and the boundaries of these operons. Operon numbers and GFF files were used to visualize candidate O-antigen operons.
 
 Example of operon search and operon visualization in _Xenorhabdus_ could be found [here](https://github.com/rybinaanya/O-antigens/blob/main/Examples/Xenorhabdus_example.ipynb). 
 
-__5. (OPTIONAL) Validate boundaries of candidate O-antigen operons and find annotation of a gene__
+__5. (OPTIONAL) Validate boundaries of candidate O-antigen operons and clarify annotation of some genes__
 
-In the case when the boundaries of operons are in doubt and if annotation of a gene was undefined, we used [this script](https://github.com/rybinaanya/O-antigens/blob/main/get_sequence.py) to extract DNA fragment to validate boundaries using BPROM and FindTerm and to clarify annotation using BLAST and ORFfinder.
+When the boundaries of operons are ambiguous, or annotation of a gene was undefined, we applied [this script](https://github.com/rybinaanya/O-antigens/blob/main/get_sequence.py) for extracting DNA fragment to validate operon boundaries using BPROM and FindTerm and to clarify annotation using BLAST and ORFfinder.
 
 __6. Codon-based test of neutrality__
 
-* creating multi-FASTA files for each gene from the conserved operons. For this stage we used PGAP annotation, since its results are more accurate than those of Prokka; obtained multi-FASTA files are deposited [here](https://github.com/rybinaanya/O-antigens/tree/main/Z_test)
+* creating multi-FASTA files for each gene from the conserved operons. For this stage, we used PGAP annotation since its results are more accurate than those of Prokka; obtained multi-FASTA files are deposited [here](https://github.com/rybinaanya/O-antigens/tree/main/Z_test)
 * running multiple sequence alignment on gene multi-FASTA files using MAFFT
 
-This two steps was implemented using [bash script](https://github.com/rybinaanya/O-antigens/blob/main/align_conserved_operon_genes.sh)
+These two steps were implemented in [bash script](https://github.com/rybinaanya/O-antigens/blob/main/align_conserved_operon_genes.sh)
 
 ```bash
 bash align_conserved_operon_genes.sh
@@ -102,7 +103,7 @@ bash align_conserved_operon_genes.sh
 
 ## Results
 
-1. Out of 204 _Providencia_ assemblies currently available at NCBI, we selected only seven complete genomes and two genomes of contig/scaffold assembly level that demonstrated the best quality. In total, we analyzed six distinct _Providencia_ species.
+1. Out of 204 _Providencia_ assemblies available to 04.03.2021 at NCBI, we selected only seven complete genomes and two genomes of contig/scaffold assembly level that demonstrated the best quality. In total, we analyzed six distinct _Providencia_ species.
 
 2. We have designed a unique pipeline for identifying candidate O-antigen operons. The key features of our pipeline are: employing several genome annotation tools, additional prediction and validation of operon boundaries, and manual curation and annotation of unknown genes. Our pipeline allowed us to detect 23 and 12 genes in variable and conserved candidate O-antigen operons, respectively. Among these genes, only seven (_galE_, _wxz_, _wzc_, _wza_, _ugd_, _rmlA_, and _wecA_)  were previously described as O-antigen ones in _Providencia_ and _Xenorhabdus_ species.  
 
