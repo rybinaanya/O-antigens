@@ -67,7 +67,7 @@ In this project we downloaded all _Providencia_ assemblies available to 04.03.20
 |GCF_900455075.1|Providencia rustigianii strain NCTC11802|  3969308   |3      |3926179|1  | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_900455075.1/) |    
 |GCF_900635875.1|Providencia rustigianii strain NCTC6933 |  3913850   |1      |3913850|1  | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_900635875.1/) |
 |GCF_014652175.1|Providencia thailandensis KCTC 23281    |  4342585   |3      |484316 |3  | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_014652175.1/) |  
-|GCA_013702025.1|Providencia rettgeri strain 2055        |  4674814   |1      |4674814|1  | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_013702025.1/) |  
+|GCF_013702025.1|Providencia rettgeri strain 2055        |  4674814   |1      |4674814|1  | [Assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_013702025.1/) |  
 
 * Annotating all selected assemblies with Prokka
 * Retrieving PGAP annotation from NCBI
